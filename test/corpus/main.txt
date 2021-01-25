@@ -1,0 +1,457 @@
+===
+empty
+===
+
+---
+
+(source_file)
+
+
+===
+without payee
+===
+2020-12-02
+    Expenses:Food:Groceries
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (whitespace)
+          (account))))))
+
+
+===
+with payee
+===
+2020-12-02 Market
+    Expenses:Food:Groceries
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (whitespace)
+          (account))))))
+
+
+===
+with full payee
+===
+2020-12-02 Local Market
+    Expenses:Food:Groceries
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (whitespace)
+          (account))))))
+
+
+===
+with cleared status
+===
+2020-12-02 *
+    Expenses:Food:Groceries
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (status)
+        (posting
+          (whitespace)
+          (account))))))
+
+
+===
+with pending status
+===
+2020-12-02 !
+    Expenses:Food:Groceries
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (status)
+        (posting
+          (whitespace)
+          (account))))))
+
+
+===
+with amount
+===
+2020-12-02
+    Expenses:Food:Groceries  2 EUR
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (whitespace)
+          (account)
+          (values
+            (spacer)
+            (amount_expr
+              (quantity)
+              (commodity))))))))
+
+
+===
+with ; comment
+===
+; hello
+
+---
+
+(source_file
+  (journal_item
+    (comment)))
+
+
+===
+with * comment
+===
+* hello
+
+---
+
+(source_file
+  (journal_item
+    (comment)))
+
+
+===
+date formats
+===
+
+2020-12-02
+    Expenses:Food:Groceries
+
+2020/12/02
+    Expenses:Food:Groceries
+
+2020.12.02
+    Expenses:Food:Groceries
+
+2020/12-02
+    Expenses:Food:Groceries
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (whitespace)
+          (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (whitespace)
+          (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (whitespace)
+          (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (whitespace)
+          (account))))))
+
+
+===
+effective date
+===
+
+2020-12-02=2020-12-03
+    Expenses:Food:Groceries
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (whitespace)
+          (account))))))
+
+===
+virtual postings
+===
+
+2012-03-10
+    Expenses:Food                20.00 u
+    Assets:Cash
+    [Budget:Food]               -20.00 u
+    [Equity:Budgets]             20.00 u
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (whitespace)
+          (account)
+          (values
+            (spacer)
+            (amount_expr
+              (quantity)
+              (commodity))))
+        (posting
+          (whitespace)
+          (account))
+        (posting
+          (whitespace)
+          (account
+            )
+          (values
+            (spacer)
+            (amount_expr
+              (quantity)
+              (commodity))))
+        (posting
+          (whitespace)
+          (account)
+          (values
+            (spacer)
+            (amount_expr
+              (quantity)
+              (commodity))))))))
+
+
+===
+with price
+===
+
+2020-12-04=2020-12-05 Selling INTC
+    Assets:Broker                           -15 INTC @ 60 USD
+    Assets:Broker                            899 USD
+    Expenses:Broker:Fees                       1 USD
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (whitespace)
+          (account)
+          (values
+            (spacer)
+            (amount_expr
+              (quantity)
+              (commodity))
+            (price
+              (amount_expr
+                (quantity)
+                (commodity)))))
+        (posting
+          (whitespace)
+          (account)
+          (values
+            (spacer)
+            (amount_expr
+              (quantity)
+              (commodity))))
+        (posting
+          (whitespace)
+          (account)
+          (values
+            (spacer)
+            (amount_expr
+              (quantity)
+             (commodity))))))))
+
+
+===
+import
+===
+
+include other.journal
+
+---
+
+(source_file
+  (journal_item
+    (directive
+      (word_directive))))
+
+
+===
+account declaration
+===
+
+account Assets:Bank Account
+
+---
+
+(source_file
+  (journal_item
+    (directive
+      (word_directive))))
+
+
+===
+alias declaration
+===
+
+alias NewName=Assets:Bank Account
+
+---
+
+(source_file
+  (journal_item
+    (directive
+      (word_directive))))
+
+
+===
+multiple comments
+===
+; something
+* something
+
+---
+
+(source_file
+  (journal_item
+    (comment))
+  (journal_item
+    (comment)))
+
+
+===
+blank lines
+===
+
+; comment
+
+* comment
+
+---
+
+(source_file
+  (journal_item
+    (comment))
+  (journal_item
+    (comment)))
+
+
+===
+multiple xacts
+===
+
+2020-12-02 * Some market
+    Expenses:Food:Groceries                1 EUR
+    Assets:Bank:Checking
+
+2012-03-10 ! Something
+    Expenses:Food                        20.00 u
+    Assets:Cash
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (status)
+        (payee)
+        (posting
+          (whitespace)
+          (account)
+          (values
+            (spacer)
+            (amount_expr
+              (quantity)
+              (commodity))))
+        (posting
+          (whitespace)
+          (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (status)
+        (payee)
+        (posting
+          (whitespace)
+          (account)
+          (values
+            (spacer)
+            (amount_expr
+              (quantity)
+              (commodity))))
+        (posting
+          (whitespace)
+          (account))))))
+
+
+===
+multiple directives
+===
+
+include foo.journal
+include bar.ledger
+alias NewName=Assets:Bank Account
+
+---
+
+(source_file
+  (journal_item
+    (directive
+      (word_directive)))
+  (journal_item
+    (directive
+      (word_directive)))
+  (journal_item
+    (directive
+      (word_directive))))

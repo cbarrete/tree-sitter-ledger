@@ -1,0 +1,26 @@
+{
+  "name": "tree-sitter-ledger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "nan": "^2.14.2"
+  },
+  "devDependencies": {
+    "tree-sitter-cli": "^0.17.3"
+  },
+  "tree-sitter": [
+    {
+      "scope": "source.ledger",
+      "file-types": [
+        "ledger",
+        "journal"
+      ]
+    }
+  ]
+}
