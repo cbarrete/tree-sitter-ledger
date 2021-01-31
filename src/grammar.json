@@ -204,8 +204,30 @@
         {
           "type": "REPEAT1",
           "content": {
-            "type": "SYMBOL",
-            "name": "posting"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "posting"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "whitespace"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "note"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\n"
+                  }
+                ]
+              }
+            ]
           }
         }
       ]
@@ -365,7 +387,7 @@
     },
     "account_name": {
       "type": "PATTERN",
-      "value": "(\\S \\S|\\S)+"
+      "value": "[^ ;](\\S \\S|\\S)+"
     },
     "values": {
       "type": "SEQ",

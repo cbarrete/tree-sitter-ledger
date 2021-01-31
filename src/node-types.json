@@ -99,6 +99,10 @@
           "named": true
         },
         {
+          "type": "note",
+          "named": true
+        },
+        {
           "type": "payee",
           "named": true
         },

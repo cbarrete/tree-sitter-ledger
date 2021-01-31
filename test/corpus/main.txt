@@ -463,3 +463,34 @@ alias NewName=Assets:Bank Account
   (journal_item
     (directive
       (word_directive))))
+
+===
+notes
+===
+2020-12-01 Something
+    ; some note
+    Expenses:Food:Groceries                21.36 EUR ; asdfsadf
+    ; another note
+    Assets:Bank:Checking
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date (single_date))
+        (whitespace)
+        (payee)
+        (whitespace)
+        (note)
+        (posting
+          (whitespace)
+          (account)
+          (values (spacer) (amount_expr (quantity) (commodity)))
+          (note))
+        (whitespace)
+        (note)
+        (posting
+          (whitespace)
+          (account))))))

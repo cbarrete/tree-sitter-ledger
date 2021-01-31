@@ -36,7 +36,7 @@ module.exports = grammar({
 
         plain_xact: $ => seq(
             seq($.date, optional(seq($.whitespace, $.status)), optional(seq($.whitespace, $.payee)), '\n'), // TODO code opt, note opt
-            repeat1($.posting),
+            repeat1(choice($.posting, seq($.whitespace, $.note, '\n'))),
         ),
 
         // date, optionally with an effective date, e.g.:
@@ -60,7 +60,9 @@ module.exports = grammar({
             seq('[', $.account_name, ']'),
         ), ''),
 
-        account_name: $ => /(\S \S|\S)+/,
+        // TODO can just use /(\p{L} \p{L}|\p{L})+/ once
+        // https://github.com/tree-sitter/tree-sitter/pull/906 is merged
+        account_name: $ => /[^ ;](\S \S|\S)+/,
 
         values: $ => seq($.spacer, $.amount_expr, optional($.price)),
 
