@@ -29,6 +29,21 @@
     "fields": {}
   },
   {
+    "type": "date",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "single_date",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "directive",
     "named": true,
     "fields": {},
@@ -84,10 +99,6 @@
           "named": true
         },
         {
-          "type": "note",
-          "named": true
-        },
-        {
           "type": "payee",
           "named": true
         },
@@ -96,11 +107,11 @@
           "named": true
         },
         {
-          "type": "spacer",
+          "type": "status",
           "named": true
         },
         {
-          "type": "status",
+          "type": "whitespace",
           "named": true
         }
       ]
@@ -291,10 +302,6 @@
     "named": true
   },
   {
-    "type": "date",
-    "named": true
-  },
-  {
     "type": "def",
     "named": false
   },
@@ -308,6 +315,10 @@
   },
   {
     "type": "payee",
+    "named": true
+  },
+  {
+    "type": "single_date",
     "named": true
   }
 ]

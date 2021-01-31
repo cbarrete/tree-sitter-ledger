@@ -157,20 +157,17 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "SYMBOL",
-                  "name": "status"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "payee"
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "whitespace"
+                    },
+                    {
+                      "type": "SYMBOL",
+                      "name": "status"
+                    }
+                  ]
                 },
                 {
                   "type": "BLANK"
@@ -185,11 +182,11 @@
                   "members": [
                     {
                       "type": "SYMBOL",
-                      "name": "spacer"
+                      "name": "whitespace"
                     },
                     {
                       "type": "SYMBOL",
-                      "name": "note"
+                      "name": "payee"
                     }
                   ]
                 },
@@ -214,8 +211,38 @@
       ]
     },
     "date": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "single_date"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "="
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "single_date"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "single_date": {
       "type": "PATTERN",
-      "value": "\\d{4}[-\\.\\/]\\d{2}[-\\.\\/]\\d{2}(=\\d{4}[-\\.\\/]\\d{2}[-\\.\\/]\\d{2})?"
+      "value": "\\d{4}[-\\.\\/]\\d{2}[-\\.\\/]\\d{2}"
     },
     "status": {
       "type": "CHOICE",

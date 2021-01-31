@@ -35,14 +35,16 @@ module.exports = grammar({
         ),
 
         plain_xact: $ => seq(
-            seq($.date, optional($.status), optional($.payee), '\n'), // TODO code opt, note opt
+            seq($.date, optional(seq($.whitespace, $.status)), optional(seq($.whitespace, $.payee)), '\n'), // TODO code opt, note opt
             repeat1($.posting),
         ),
 
         // date, optionally with an effective date, e.g.:
         // 2020-01-01
         // 2020/01/01=2020.01-02
-        date: $ => /\d{4}[-\.\/]\d{2}[-\.\/]\d{2}(=\d{4}[-\.\/]\d{2}[-\.\/]\d{2})?/,
+        date: $ => seq($.single_date, optional(seq('=', $.single_date))),
+
+        single_date: $ => /\d{4}[-\.\/]\d{2}[-\.\/]\d{2}/,
 
         status: $ => choice('*', '!'),
 
