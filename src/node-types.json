@@ -28,7 +28,7 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
         {
@@ -45,6 +45,10 @@
         },
         {
           "type": "check_out",
+          "named": true
+        },
+        {
+          "type": "commodity",
           "named": true
         }
       ]
@@ -386,6 +390,10 @@
   },
   {
     "type": "A",
+    "named": false
+  },
+  {
+    "type": "C",
     "named": false
   },
   {
