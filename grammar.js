@@ -37,6 +37,7 @@ module.exports = grammar({
 
             seq('A', $.account),
             seq('Y', /\d{4}/),
+            seq('N', $.commodity),
             seq('D', $.amount),
             seq('C', seq($.commodity, '=', $.amount)),
             // TODO the other ones

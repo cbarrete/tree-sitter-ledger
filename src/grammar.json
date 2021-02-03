@@ -206,6 +206,19 @@
           "members": [
             {
               "type": "STRING",
+              "value": "N"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "commodity"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
               "value": "D"
             },
             {

@@ -572,6 +572,17 @@ bucket Some:Account
   (journal_item (directive (word_directive (account)))))
 
 ===
+ignore pricing directive
+===
+
+N EUR
+
+---
+
+(source_file
+  (journal_item (directive (char_directive (commodity)))))
+
+===
 default commodity directive
 ===
 
