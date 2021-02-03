@@ -546,17 +546,21 @@ O 2013/03/29 03:39:00
           (time))))))
 
 ===
-year
+year directives
 ===
 
 Y 2021
+year 2021
 
 ---
 
 (source_file
-  (journal_item
-    (directive
-      (char_directive))))
+ (journal_item
+   (directive
+     (char_directive)))
+ (journal_item
+   (directive
+     (word_directive))))
 
 ===
 account

@@ -26,6 +26,7 @@ module.exports = grammar({
             'end',
             seq('alias', /[^=]+/, '=', /.+/),
             seq('def', /.+/),
+            seq('year', /\d{4}/),
         ),
 
         char_directive: $ => choice(

@@ -135,6 +135,19 @@
               "value": ".+"
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "year"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\d{4}"
+            }
+          ]
         }
       ]
     },

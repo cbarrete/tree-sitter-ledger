@@ -437,5 +437,9 @@
   {
     "type": "time",
     "named": true
+  },
+  {
+    "type": "year",
+    "named": false
   }
 ]
