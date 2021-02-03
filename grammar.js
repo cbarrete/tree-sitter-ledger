@@ -40,7 +40,7 @@ module.exports = grammar({
             seq('N', $.commodity),
             seq('D', $.amount),
             seq('C', seq($.commodity, '=', $.amount)),
-            // TODO the other ones
+            seq('P', seq($.date, $.commodity, $.amount))
         ),
 
         check_in: $ => seq(choice('i', 'I'), $.date, $.time, $.account, optional(seq($.spacer, $.payee))),

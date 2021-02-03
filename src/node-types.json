@@ -50,6 +50,10 @@
         {
           "type": "commodity",
           "named": true
+        },
+        {
+          "type": "date",
+          "named": true
         }
       ]
     }
@@ -410,6 +414,10 @@
   },
   {
     "type": "O",
+    "named": false
+  },
+  {
+    "type": "P",
     "named": false
   },
   {

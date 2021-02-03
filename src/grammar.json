@@ -252,6 +252,32 @@
               ]
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "P"
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "date"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "commodity"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "amount"
+                }
+              ]
+            }
+          ]
         }
       ]
     },
