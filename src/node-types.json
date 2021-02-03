@@ -29,7 +29,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "amount",
@@ -380,6 +380,10 @@
   },
   {
     "type": "O",
+    "named": false
+  },
+  {
+    "type": "Y",
     "named": false
   },
   {

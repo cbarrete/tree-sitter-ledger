@@ -154,6 +154,19 @@
           "members": [
             {
               "type": "STRING",
+              "value": "Y"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\d{4}"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
               "value": "D"
             },
             {

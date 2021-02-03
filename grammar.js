@@ -33,6 +33,7 @@ module.exports = grammar({
             $.check_in,
             $.check_out,
 
+            seq('Y', /\d{4}/),
             seq('D', $.amount),
             // TODO the other ones
         ),

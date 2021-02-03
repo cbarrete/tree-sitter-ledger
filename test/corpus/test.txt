@@ -546,6 +546,19 @@ O 2013/03/29 03:39:00
           (time))))))
 
 ===
+year
+===
+
+Y 2021
+
+---
+
+(source_file
+  (journal_item
+    (directive
+      (char_directive))))
+
+===
 default commodity directive
 ===
 
