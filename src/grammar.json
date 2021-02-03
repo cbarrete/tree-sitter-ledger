@@ -154,6 +154,19 @@
           "members": [
             {
               "type": "STRING",
+              "value": "A"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "account"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
               "value": "Y"
             },
             {

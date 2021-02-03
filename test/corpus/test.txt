@@ -559,6 +559,19 @@ Y 2021
       (char_directive))))
 
 ===
+account
+===
+
+A Some:Account
+
+---
+
+(source_file
+  (journal_item
+    (directive
+      (char_directive (account)))))
+
+===
 default commodity directive
 ===
 

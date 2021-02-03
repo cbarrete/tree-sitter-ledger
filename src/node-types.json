@@ -32,6 +32,10 @@
       "required": false,
       "types": [
         {
+          "type": "account",
+          "named": true
+        },
+        {
           "type": "amount",
           "named": true
         },
@@ -368,6 +372,10 @@
   },
   {
     "type": "@@",
+    "named": false
+  },
+  {
+    "type": "A",
     "named": false
   },
   {
