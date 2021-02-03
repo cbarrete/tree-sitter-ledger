@@ -29,8 +29,11 @@ module.exports = grammar({
         ),
 
         char_directive: $ => choice(
+            // timeclock.el
             $.check_in,
             $.check_out,
+
+            seq('D', $.amount),
             // TODO the other ones
         ),
 
@@ -76,9 +79,9 @@ module.exports = grammar({
         // https://github.com/tree-sitter/tree-sitter/pull/906 is merged
         account_name: $ => /[^ ;](\S \S|\S)+/,
 
-        values: $ => seq($.spacer, $.amount_expr, optional($.price)),
+        values: $ => seq($.spacer, $.amount, optional($.price)),
 
-        amount_expr: $ => seq($.quantity, $.commodity),
+        amount: $ => seq($.quantity, $.commodity),
 
         quantity: $ => seq(
             optional('-'), /\d+(\.\d+)?/
@@ -86,7 +89,7 @@ module.exports = grammar({
 
         commodity: $ => /[a-zA-Z ]+/,
 
-        price: $ => seq(choice('@', '@@'), $.amount_expr),
+        price: $ => seq(choice('@', '@@'), $.amount),
 
         whitespace: $ => repeat1(choice(' ', '\t')),
 

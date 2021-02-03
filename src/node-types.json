@@ -5,7 +5,7 @@
     "fields": {}
   },
   {
-    "type": "amount_expr",
+    "type": "amount",
     "named": true,
     "fields": {},
     "children": {
@@ -31,6 +31,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "amount",
+          "named": true
+        },
         {
           "type": "check_in",
           "named": true
@@ -230,7 +234,7 @@
       "required": true,
       "types": [
         {
-          "type": "amount_expr",
+          "type": "amount",
           "named": true
         }
       ]
@@ -275,7 +279,7 @@
       "required": true,
       "types": [
         {
-          "type": "amount_expr",
+          "type": "amount",
           "named": true
         },
         {
@@ -364,6 +368,10 @@
   },
   {
     "type": "@@",
+    "named": false
+  },
+  {
+    "type": "D",
     "named": false
   },
   {
