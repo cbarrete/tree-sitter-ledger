@@ -148,6 +148,19 @@
               "value": "\\d{4}"
             }
           ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "bucket"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "account"
+            }
+          ]
         }
       ]
     },

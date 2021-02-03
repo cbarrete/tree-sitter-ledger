@@ -555,25 +555,21 @@ year 2021
 ---
 
 (source_file
- (journal_item
-   (directive
-     (char_directive)))
- (journal_item
-   (directive
-     (word_directive))))
+ (journal_item (directive (char_directive)))
+ (journal_item (directive (word_directive))))
 
 ===
-account
+bucket directives
 ===
 
 A Some:Account
+bucket Some:Account
 
 ---
 
 (source_file
-  (journal_item
-    (directive
-      (char_directive (account)))))
+  (journal_item (directive (char_directive (account))))
+  (journal_item (directive (word_directive (account)))))
 
 ===
 default commodity directive
@@ -584,7 +580,4 @@ D 1.000 EUR
 ---
 
 (source_file
-  (journal_item
-    (directive
-      (char_directive
-        (amount (quantity) (commodity))))))
+  (journal_item (directive (char_directive (amount (quantity) (commodity))))))

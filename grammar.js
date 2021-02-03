@@ -27,6 +27,7 @@ module.exports = grammar({
             seq('alias', /[^=]+/, '=', /.+/),
             seq('def', /.+/),
             seq('year', /\d{4}/),
+            seq('bucket', $.account),
         ),
 
         char_directive: $ => choice(

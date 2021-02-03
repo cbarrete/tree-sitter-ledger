@@ -305,7 +305,17 @@
   {
     "type": "word_directive",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "account",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "xact",
@@ -400,6 +410,10 @@
   },
   {
     "type": "alias",
+    "named": false
+  },
+  {
+    "type": "bucket",
     "named": false
   },
   {
