@@ -62,6 +62,10 @@
         {
           "type": "SYMBOL",
           "name": "word_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "char_directive"
         }
       ]
     },
@@ -131,6 +135,96 @@
               "value": ".+"
             }
           ]
+        }
+      ]
+    },
+    "char_directive": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "check_in"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "check_out"
+        }
+      ]
+    },
+    "check_in": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "i"
+            },
+            {
+              "type": "STRING",
+              "value": "I"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "date"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "time"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "account"
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "spacer"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "payee"
+                }
+              ]
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        }
+      ]
+    },
+    "check_out": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "o"
+            },
+            {
+              "type": "STRING",
+              "value": "O"
+            }
+          ]
+        },
+        {
+          "type": "SYMBOL",
+          "name": "date"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "time"
         }
       ]
     },
@@ -265,6 +359,10 @@
     "single_date": {
       "type": "PATTERN",
       "value": "\\d{4}[-\\.\\/]\\d{2}[-\\.\\/]\\d{2}"
+    },
+    "time": {
+      "type": "PATTERN",
+      "value": "\\d{2}:\\d{2}:\\d{2}"
     },
     "status": {
       "type": "CHOICE",

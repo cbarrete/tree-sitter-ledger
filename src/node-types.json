@@ -24,6 +24,75 @@
     }
   },
   {
+    "type": "char_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "check_in",
+          "named": true
+        },
+        {
+          "type": "check_out",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "check_in",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "account",
+          "named": true
+        },
+        {
+          "type": "date",
+          "named": true
+        },
+        {
+          "type": "payee",
+          "named": true
+        },
+        {
+          "type": "spacer",
+          "named": true
+        },
+        {
+          "type": "time",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "check_out",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "date",
+          "named": true
+        },
+        {
+          "type": "time",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "comment",
     "named": true,
     "fields": {}
@@ -51,6 +120,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "char_directive",
+          "named": true
+        },
         {
           "type": "word_directive",
           "named": true
@@ -294,6 +367,14 @@
     "named": false
   },
   {
+    "type": "I",
+    "named": false
+  },
+  {
+    "type": "O",
+    "named": false
+  },
+  {
     "type": "account",
     "named": false
   },
@@ -314,7 +395,15 @@
     "named": false
   },
   {
+    "type": "i",
+    "named": false
+  },
+  {
     "type": "include",
+    "named": false
+  },
+  {
+    "type": "o",
     "named": false
   },
   {
@@ -323,6 +412,10 @@
   },
   {
     "type": "single_date",
+    "named": true
+  },
+  {
+    "type": "time",
     "named": true
   }
 ]

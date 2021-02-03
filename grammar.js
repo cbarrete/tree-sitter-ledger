@@ -17,7 +17,7 @@ module.exports = grammar({
         // ! and @ are deprecated, let's not take them into account
         directive: $ => choice(
             $.word_directive,
-            // TODO $.char_directive
+            $.char_directive,
         ),
 
         word_directive: $ => choice(
@@ -27,6 +27,16 @@ module.exports = grammar({
             seq('alias', /[^=]+/, '=', /.+/),
             seq('def', /.+/),
         ),
+
+        char_directive: $ => choice(
+            $.check_in,
+            $.check_out,
+            // TODO the other ones
+        ),
+
+        check_in: $ => seq(choice('i', 'I'), $.date, $.time, $.account, optional(seq($.spacer, $.payee))),
+
+        check_out: $ => seq(choice('o', 'O'), $.date, $.time),
 
         xact: $ => choice(
             $.plain_xact,
@@ -45,6 +55,8 @@ module.exports = grammar({
         date: $ => seq($.single_date, optional(seq('=', $.single_date))),
 
         single_date: $ => /\d{4}[-\.\/]\d{2}[-\.\/]\d{2}/,
+
+        time: $ => /\d{2}:\d{2}:\d{2}/,
 
         status: $ => choice('*', '!'),
 

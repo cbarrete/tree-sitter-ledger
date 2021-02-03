@@ -494,3 +494,53 @@ notes
         (posting
           (whitespace)
           (account))))))
+
+===
+time directives
+===
+
+i 2013/03/28 22:13:00 Some:Account
+o 2013/03/29 03:39:00
+
+---
+
+(source_file
+  (journal_item
+    (directive
+      (char_directive
+        (check_in
+          (date (single_date))
+          (time)
+          (account)))))
+  (journal_item
+    (directive
+      (char_directive
+        (check_out
+          (date (single_date))
+          (time))))))
+
+===
+time directives with payee
+===
+
+I 2013/03/28 22:13:00 Some:Account  A Payee
+O 2013/03/29 03:39:00
+
+---
+
+(source_file
+  (journal_item
+    (directive
+      (char_directive
+        (check_in
+          (date (single_date))
+          (time)
+          (account)
+          (spacer)
+          (payee)))))
+  (journal_item
+    (directive
+      (char_directive
+        (check_out
+          (date (single_date))
+          (time))))))
