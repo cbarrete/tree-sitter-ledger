@@ -623,3 +623,23 @@ P 2021-02-03 EUR 1.20 USD
         (date (single_date))
         (commodity)
         (amount (quantity) (commodity))))))
+
+===
+multiword commodity
+===
+
+D 1.000 "Foo's Bar"
+C "Foo" = 1.20 "Foo Bar"
+
+2020-12-02
+    Expenses:Food:Groceries  2 "Hey there"
+
+---
+
+(source_file
+  (journal_item (directive (char_directive (amount (quantity) (commodity)))))
+  (journal_item (directive (char_directive (commodity) (amount (quantity) (commodity)))))
+  (journal_item (xact
+      (plain_xact
+        (date (single_date))
+        (posting (whitespace) (account) (values (spacer) (amount (quantity) (commodity))))))))

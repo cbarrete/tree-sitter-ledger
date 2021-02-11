@@ -114,6 +114,11 @@
     "fields": {}
   },
   {
+    "type": "commodity",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "date",
     "named": true,
     "fields": {},
@@ -435,10 +440,6 @@
   {
     "type": "bucket",
     "named": false
-  },
-  {
-    "type": "commodity",
-    "named": true
   },
   {
     "type": "def",
