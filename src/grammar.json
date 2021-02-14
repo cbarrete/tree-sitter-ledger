@@ -655,15 +655,33 @@
       ]
     },
     "amount": {
-      "type": "SEQ",
+      "type": "CHOICE",
       "members": [
         {
-          "type": "SYMBOL",
-          "name": "quantity"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "quantity"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "commodity"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "commodity"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "commodity"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "quantity"
+            }
+          ]
         }
       ]
     },
