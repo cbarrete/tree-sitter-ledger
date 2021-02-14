@@ -87,7 +87,10 @@ module.exports = grammar({
 
         values: $ => seq($.spacer, $.amount, optional($.price)),
 
-        amount: $ => seq($.quantity, $.commodity),
+        amount: $ => choice(
+            seq($.quantity, $.commodity),
+            seq($.commodity, $.quantity),
+        ),
 
         quantity: $ => seq(
             optional('-'), /\d+(\.\d+)?/
