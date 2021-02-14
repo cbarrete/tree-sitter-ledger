@@ -232,6 +232,10 @@
           "named": true
         },
         {
+          "type": "status",
+          "named": true
+        },
+        {
           "type": "values",
           "named": true
         },

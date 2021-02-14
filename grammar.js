@@ -73,7 +73,7 @@ module.exports = grammar({
 
         note: $ => seq(';', /.*/),
 
-        posting: $ => seq($.whitespace, $.account, optional($.values), optional($.note), '\n'),
+        posting: $ => seq($.whitespace, optional($.status), $.account, optional($.values), optional($.note), '\n'),
 
         account: $ => alias(choice(
             $.account_name,

@@ -267,6 +267,42 @@ virtual postings
 
 
 ===
+postings with status
+===
+
+2012-03-10
+    * Assets:Bank A                 -20.00 u
+    ! Assets:Bank B                  20.00 u
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date (single_date))
+        (posting
+          (whitespace)
+          (status)
+          (account)
+          (values
+            (spacer)
+            (amount
+              (quantity)
+              (commodity))))
+        (posting
+          (whitespace)
+          (status)
+          (account)
+          (values
+            (spacer)
+            (amount
+              (quantity)
+              (commodity))))
+        ))))
+
+
+===
 with price
 ===
 
