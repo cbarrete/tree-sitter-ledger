@@ -85,7 +85,7 @@ module.exports = grammar({
         // https://github.com/tree-sitter/tree-sitter/pull/906 is merged
         account_name: $ => /[^ ;](\S \S|\S)+/,
 
-        values: $ => seq($.spacer, $.amount, optional($.price)),
+        values: $ => seq($.spacer, $.amount, optional($.price), optional($.balance_assertion)),
 
         amount: $ => choice(
             seq($.quantity, $.commodity),
@@ -99,6 +99,8 @@ module.exports = grammar({
         commodity: $ => choice(/[a-zA-Z]+/, /"[^"\n]*"/),
 
         price: $ => seq(choice('@', '@@'), $.amount),
+
+        balance_assertion: $ => seq('=', choice($.amount)),
 
         whitespace: $ => repeat1(choice(' ', '\t')),
 

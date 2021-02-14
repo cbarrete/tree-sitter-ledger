@@ -24,6 +24,21 @@
     }
   },
   {
+    "type": "balance_assertion",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "amount",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "char_directive",
     "named": true,
     "fields": {},
@@ -301,6 +316,10 @@
       "types": [
         {
           "type": "amount",
+          "named": true
+        },
+        {
+          "type": "balance_assertion",
           "named": true
         },
         {
