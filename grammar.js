@@ -93,7 +93,7 @@ module.exports = grammar({
         ),
 
         quantity: $ => seq(
-            optional('-'), /\d+(\.\d+)?/
+            optional('-'), /\d([\d., ']*\d)?/,
         ),
 
         commodity: $ => choice(/[a-zA-Z]+/, /"[^"\n]*"/),
