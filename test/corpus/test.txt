@@ -743,3 +743,21 @@ C "Foo" = 1.20 "Foo Bar"
       (plain_xact
         (date (single_date))
         (posting (whitespace) (account) (values (spacer) (amount (quantity) (commodity))))))))
+
+===
+various quantity formats
+===
+
+2020-12-02
+    Assets:Bank  1 000,00 PLN
+    Assets:Bank  1,000.00 CHF
+
+---
+
+(source_file
+  (journal_item (xact
+      (plain_xact
+        (date (single_date))
+        (posting (whitespace) (account) (values (spacer) (amount (quantity) (commodity))))
+        (posting (whitespace) (account) (values (spacer) (amount (quantity) (commodity))))
+        ))))
