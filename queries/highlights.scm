@@ -23,4 +23,10 @@
     "nomarket"
     "note"
     "payee"
+    "A"
+    "Y"
+    "N"
+    "D"
+    "C"
+    "P"
 ] @keyword
