@@ -20,9 +20,7 @@ without payee
     (xact
       (plain_xact
         (date (single_date))
-        (posting
-          (whitespace)
-          (account))))))
+        (posting (account))))))
 
 
 ===
@@ -38,11 +36,8 @@ with payee
     (xact
       (plain_xact
         (date (single_date))
-        (whitespace)
         (payee)
-        (posting
-          (whitespace)
-          (account))))))
+        (posting (account))))))
 
 
 ===
@@ -58,11 +53,8 @@ with full payee
     (xact
       (plain_xact
         (date (single_date))
-        (whitespace)
         (payee)
-        (posting
-          (whitespace)
-          (account))))))
+        (posting (account))))))
 
 
 ===
@@ -78,11 +70,8 @@ with cleared status
     (xact
       (plain_xact
         (date (single_date))
-        (whitespace)
         (status)
-        (posting
-          (whitespace)
-          (account))))))
+        (posting (account))))))
 
 
 ===
@@ -98,11 +87,8 @@ with pending status
     (xact
       (plain_xact
         (date (single_date))
-        (whitespace)
         (status)
-        (posting
-          (whitespace)
-          (account))))))
+        (posting (account))))))
 
 
 ===
@@ -119,7 +105,6 @@ with amount
       (plain_xact
         (date (single_date))
         (posting
-          (whitespace)
           (account)
           (values
             (spacer)
@@ -142,7 +127,6 @@ with amount that has commodity first
       (plain_xact
         (date (single_date))
         (posting
-          (whitespace)
           (account)
           (values
             (spacer)
@@ -198,30 +182,22 @@ date formats
     (xact
       (plain_xact
         (date (single_date))
-        (posting
-          (whitespace)
-          (account)))))
+        (posting (account)))))
   (journal_item
     (xact
       (plain_xact
         (date (single_date))
-        (posting
-          (whitespace)
-          (account)))))
+        (posting (account)))))
   (journal_item
     (xact
       (plain_xact
         (date (single_date))
-        (posting
-          (whitespace)
-          (account)))))
+        (posting (account)))))
   (journal_item
     (xact
       (plain_xact
         (date (single_date))
-        (posting
-          (whitespace)
-          (account))))))
+        (posting (account))))))
 
 
 ===
@@ -238,9 +214,7 @@ effective date
     (xact
       (plain_xact
         (date (single_date) (single_date))
-        (posting
-          (whitespace)
-          (account))))))
+        (posting (account))))))
 
 ===
 virtual postings
@@ -260,7 +234,14 @@ virtual postings
       (plain_xact
         (date (single_date))
         (posting
-          (whitespace)
+          (account)
+          (values
+            (spacer)
+            (amount
+              (quantity)
+              (commodity))))
+        (posting (account))
+        (posting
           (account)
           (values
             (spacer)
@@ -268,19 +249,6 @@ virtual postings
               (quantity)
               (commodity))))
         (posting
-          (whitespace)
-          (account))
-        (posting
-          (whitespace)
-          (account
-            )
-          (values
-            (spacer)
-            (amount
-              (quantity)
-              (commodity))))
-        (posting
-          (whitespace)
           (account)
           (values
             (spacer)
@@ -305,7 +273,6 @@ postings with status
       (plain_xact
         (date (single_date))
         (posting
-          (whitespace)
           (status)
           (account)
           (values
@@ -314,7 +281,6 @@ postings with status
               (quantity)
               (commodity))))
         (posting
-          (whitespace)
           (status)
           (account)
           (values
@@ -341,10 +307,8 @@ with price
     (xact
       (plain_xact
         (date (single_date) (single_date))
-        (whitespace)
         (payee)
         (posting
-          (whitespace)
           (account)
           (values
             (spacer)
@@ -356,7 +320,6 @@ with price
                 (quantity)
                 (commodity)))))
         (posting
-          (whitespace)
           (account)
           (values
             (spacer)
@@ -364,7 +327,6 @@ with price
               (quantity)
               (commodity))))
         (posting
-          (whitespace)
           (account)
           (values
             (spacer)
@@ -389,7 +351,6 @@ with price and balance assertion
       (plain_xact
         (date (single_date))
         (posting
-          (whitespace)
           (account)
           (values
             (spacer)
@@ -405,7 +366,6 @@ with price and balance assertion
                 (quantity)
                 (commodity)))))
         (posting
-          (whitespace)
           (account)
           (values
             (spacer)
@@ -507,12 +467,9 @@ multiple xacts
     (xact
       (plain_xact
         (date (single_date))
-        (whitespace)
         (status)
-        (whitespace)
         (payee)
         (posting
-          (whitespace)
           (account)
           (values
             (spacer)
@@ -520,18 +477,14 @@ multiple xacts
               (quantity)
               (commodity))))
         (posting
-          (whitespace)
           (account)))))
   (journal_item
     (xact
       (plain_xact
         (date (single_date))
-        (whitespace)
         (status)
-        (whitespace)
         (payee)
         (posting
-          (whitespace)
           (account)
           (values
             (spacer)
@@ -539,7 +492,6 @@ multiple xacts
               (quantity)
               (commodity))))
         (posting
-          (whitespace)
           (account))))))
 
 
@@ -580,20 +532,14 @@ notes
     (xact
       (plain_xact
         (date (single_date))
-        (whitespace)
         (payee)
-        (whitespace)
         (note)
         (posting
-          (whitespace)
           (account)
           (values (spacer) (amount (quantity) (commodity)))
           (note))
-        (whitespace)
         (note)
-        (posting
-          (whitespace)
-          (account))))))
+        (posting (account))))))
 
 ===
 time directives
@@ -742,7 +688,7 @@ C "Foo" = 1.20 "Foo Bar"
   (journal_item (xact
       (plain_xact
         (date (single_date))
-        (posting (whitespace) (account) (values (spacer) (amount (quantity) (commodity))))))))
+        (posting (account) (values (spacer) (amount (quantity) (commodity))))))))
 
 ===
 various quantity formats
@@ -758,6 +704,6 @@ various quantity formats
   (journal_item (xact
       (plain_xact
         (date (single_date))
-        (posting (whitespace) (account) (values (spacer) (amount (quantity) (commodity))))
-        (posting (whitespace) (account) (values (spacer) (amount (quantity) (commodity))))
+        (posting (account) (values (spacer) (amount (quantity) (commodity))))
+        (posting (account) (values (spacer) (amount (quantity) (commodity))))
         ))))

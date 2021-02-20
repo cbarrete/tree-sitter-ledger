@@ -3,6 +3,8 @@ module.exports = grammar({
 
     extras: $ => [' ', '\t'],
 
+    inline: $ => [$.whitespace],
+
     rules: {
         source_file: $ => repeat(choice($.journal_item, '\n')),
 
