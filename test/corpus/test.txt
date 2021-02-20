@@ -399,7 +399,41 @@ account Assets:Bank Account
 (source_file
   (journal_item
     (directive
-      (word_directive))))
+      (account_directive (account)))))
+
+
+===
+account with notes
+===
+
+account Assets:Bank
+  note My Bank account
+
+---
+
+(source_file
+  (journal_item
+    (directive
+      (account_directive
+        (account)
+        ))))
+
+
+===
+commodity with format
+===
+
+commodity CHF
+  format 1'000,00 CHF
+
+---
+
+(source_file
+  (journal_item
+    (directive
+      (commodity_directive
+        (commodity)
+        ))))
 
 
 ===

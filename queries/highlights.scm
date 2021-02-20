@@ -11,6 +11,7 @@
 
 [
     "account"
+    "commodity"
     "end"
     "def"
 ] @keyword

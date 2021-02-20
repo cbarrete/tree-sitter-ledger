@@ -3,7 +3,7 @@ module.exports = grammar({
 
     extras: $ => [' ', '\t'],
 
-    inline: $ => [$.whitespace],
+    inline: $ => [$.indented_line, $.whitespace],
 
     rules: {
         source_file: $ => repeat(choice($.journal_item, '\n')),
@@ -16,15 +16,28 @@ module.exports = grammar({
 
         comment: $ => seq(choice(';', '*'), /.*\n/),
 
+        indented_line: $ => seq($.whitespace, /[^\n]+\n/),
+
         // ! and @ are deprecated, let's not take them into account
         directive: $ => choice(
+            $.account_directive,
+            $.commodity_directive,
             $.word_directive,
             $.char_directive,
         ),
 
+        account_directive: $ => seq(
+          seq("account", $.whitespace, $.account, "\n"),
+          repeat($.indented_line),
+        ),
+
+        commodity_directive: $ => seq(
+          seq("commodity", $.whitespace, $.commodity, '\n'),
+          repeat($.indented_line),
+        ),
+
         word_directive: $ => choice(
             seq('include', /.+/),
-            seq('account', /.+/),
             'end',
             seq('alias', /[^=]+/, '=', /.+/),
             seq('def', /.+/),

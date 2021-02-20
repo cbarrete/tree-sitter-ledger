@@ -5,6 +5,21 @@
     "fields": {}
   },
   {
+    "type": "account_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "account",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "amount",
     "named": true,
     "fields": {},
@@ -134,6 +149,21 @@
     "fields": {}
   },
   {
+    "type": "commodity_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "commodity",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "date",
     "named": true,
     "fields": {},
@@ -157,7 +187,15 @@
       "required": true,
       "types": [
         {
+          "type": "account_directive",
+          "named": true
+        },
+        {
           "type": "char_directive",
+          "named": true
+        },
+        {
+          "type": "commodity_directive",
           "named": true
         },
         {
@@ -449,6 +487,10 @@
   },
   {
     "type": "bucket",
+    "named": false
+  },
+  {
+    "type": "commodity",
     "named": false
   },
   {

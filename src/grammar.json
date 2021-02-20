@@ -56,9 +56,30 @@
         }
       ]
     },
+    "indented_line": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "whitespace"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\n]+\\n"
+        }
+      ]
+    },
     "directive": {
       "type": "CHOICE",
       "members": [
+        {
+          "type": "SYMBOL",
+          "name": "account_directive"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "commodity_directive"
+        },
         {
           "type": "SYMBOL",
           "name": "word_directive"
@@ -66,6 +87,72 @@
         {
           "type": "SYMBOL",
           "name": "char_directive"
+        }
+      ]
+    },
+    "account_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "account"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "account"
+            },
+            {
+              "type": "STRING",
+              "value": "\n"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "indented_line"
+          }
+        }
+      ]
+    },
+    "commodity_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "commodity"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "commodity"
+            },
+            {
+              "type": "STRING",
+              "value": "\n"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "indented_line"
+          }
         }
       ]
     },
@@ -78,19 +165,6 @@
             {
               "type": "STRING",
               "value": "include"
-            },
-            {
-              "type": "PATTERN",
-              "value": ".+"
-            }
-          ]
-        },
-        {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "STRING",
-              "value": "account"
             },
             {
               "type": "PATTERN",
@@ -818,6 +892,7 @@
   "conflicts": [],
   "externals": [],
   "inline": [
+    "indented_line",
     "whitespace"
   ],
   "supertypes": []
