@@ -9,15 +9,63 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "account",
           "named": true
+        },
+        {
+          "type": "account_subdirective",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "account_subdirective",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "alias_subdirective",
+          "named": true
+        },
+        {
+          "type": "assert_subdirective",
+          "named": true
+        },
+        {
+          "type": "check_subdirective",
+          "named": true
+        },
+        {
+          "type": "default_subdirective",
+          "named": true
+        },
+        {
+          "type": "eval_subdirective",
+          "named": true
+        },
+        {
+          "type": "note_subdirective",
+          "named": true
+        },
+        {
+          "type": "payee_subdirective",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "alias_subdirective",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "amount",
@@ -37,6 +85,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "assert_subdirective",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "balance_assertion",
@@ -139,6 +192,11 @@
     }
   },
   {
+    "type": "check_subdirective",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "comment",
     "named": true,
     "fields": {}
@@ -153,11 +211,46 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": true,
       "types": [
         {
           "type": "commodity",
+          "named": true
+        },
+        {
+          "type": "commodity_subdirective",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "commodity_subdirective",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "alias_subdirective",
+          "named": true
+        },
+        {
+          "type": "default_subdirective",
+          "named": true
+        },
+        {
+          "type": "format_subdirective",
+          "named": true
+        },
+        {
+          "type": "nomarket_subdirective",
+          "named": true
+        },
+        {
+          "type": "note_subdirective",
           "named": true
         }
       ]
@@ -177,6 +270,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "default_subdirective",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "directive",
@@ -206,6 +304,26 @@
     }
   },
   {
+    "type": "eval_subdirective",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "format_subdirective",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "amount",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "journal_item",
     "named": true,
     "fields": {},
@@ -229,7 +347,22 @@
     }
   },
   {
+    "type": "nomarket_subdirective",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "note",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "note_subdirective",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "payee_subdirective",
     "named": true,
     "fields": {}
   },
@@ -486,7 +619,15 @@
     "named": false
   },
   {
+    "type": "assert",
+    "named": false
+  },
+  {
     "type": "bucket",
+    "named": false
+  },
+  {
+    "type": "check",
     "named": false
   },
   {
@@ -498,7 +639,19 @@
     "named": false
   },
   {
+    "type": "default",
+    "named": false
+  },
+  {
     "type": "end",
+    "named": false
+  },
+  {
+    "type": "eval",
+    "named": false
+  },
+  {
+    "type": "format",
     "named": false
   },
   {
@@ -510,7 +663,19 @@
     "named": false
   },
   {
+    "type": "nomarket",
+    "named": false
+  },
+  {
+    "type": "note",
+    "named": false
+  },
+  {
     "type": "o",
+    "named": false
+  },
+  {
+    "type": "payee",
     "named": false
   },
   {

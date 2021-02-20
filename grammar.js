@@ -27,13 +27,31 @@ module.exports = grammar({
         ),
 
         account_directive: $ => seq(
-          seq("account", $.whitespace, $.account, "\n"),
-          repeat($.indented_line),
+            seq("account", $.whitespace, $.account, '\n'),
+            repeat($.account_subdirective),
+        ),
+
+        account_subdirective: $ => choice(
+            $.alias_subdirective,
+            $.assert_subdirective,
+            $.check_subdirective,
+            $.default_subdirective,
+            $.eval_subdirective,
+            $.note_subdirective,
+            $.payee_subdirective,
         ),
 
         commodity_directive: $ => seq(
-          seq("commodity", $.whitespace, $.commodity, '\n'),
-          repeat($.indented_line),
+            seq("commodity", $.whitespace, $.commodity, '\n'),
+            repeat($.commodity_subdirective),
+        ),
+
+        commodity_subdirective: $ => choice(
+            $.alias_subdirective,
+            $.default_subdirective,
+            $.format_subdirective,
+            $.note_subdirective,
+            $.nomarket_subdirective,
         ),
 
         word_directive: $ => choice(
@@ -56,6 +74,67 @@ module.exports = grammar({
             seq('D', $.amount),
             seq('C', seq($.commodity, '=', $.amount)),
             seq('P', seq($.date, $.commodity, $.amount))
+        ),
+
+        alias_subdirective: $ => seq(
+            $.whitespace,
+            'alias',
+            $.whitespace,
+            /.+\n/,
+        ),
+
+        assert_subdirective: $ => seq(
+            $.whitespace,
+            'assert',
+            $.whitespace,
+            /.+\n/,
+        ),
+
+        check_subdirective: $ => seq(
+            $.whitespace,
+            'check',
+            $.whitespace,
+            /.+\n/,
+        ),
+
+        default_subdirective: $ => seq(
+            $.whitespace,
+            'default',
+            /\n/,
+        ),
+
+        eval_subdirective: $ => seq(
+            $.whitespace,
+            'eval',
+            $.whitespace,
+            /.+\n/,
+        ),
+
+        format_subdirective: $ => seq(
+            $.whitespace,
+            "format",
+            $.whitespace,
+            $.amount,
+        ),
+
+        nomarket_subdirective: $ => seq(
+            $.whitespace,
+            "nomarket",
+            /\n/,
+        ),
+
+        note_subdirective: $ => seq(
+            $.whitespace,
+            "note",
+            $.whitespace,
+            /.+\n/,
+        ),
+
+        payee_subdirective: $ => seq(
+            $.whitespace,
+            'payee',
+            $.whitespace,
+            /.+\n/,
         ),
 
         check_in: $ => seq(choice('i', 'I'), $.date, $.time, $.account, optional(seq($.spacer, $.payee))),
