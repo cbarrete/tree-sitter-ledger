@@ -416,6 +416,7 @@ account Assets:Bank
     (directive
       (account_directive
         (account)
+        (account_subdirective (note_subdirective))
         ))))
 
 
@@ -424,7 +425,7 @@ commodity with format
 ===
 
 commodity CHF
-  format 1'000,00 CHF
+  format 1,000.00 CHF
 
 ---
 
@@ -433,6 +434,8 @@ commodity CHF
     (directive
       (commodity_directive
         (commodity)
+        (commodity_subdirective
+          (format_subdirective (amount (quantity) (commodity))))
         ))))
 
 

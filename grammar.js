@@ -1,124 +1,203 @@
 module.exports = grammar({
-    name: 'ledger',
+  name: 'ledger',
 
-    extras: $ => [' ', '\t'],
+  extras: $ => [' ', '\t'],
 
-    inline: $ => [$.indented_line, $.whitespace],
+  inline: $ => [$.indented_line, $.whitespace],
 
-    rules: {
-        source_file: $ => repeat(choice($.journal_item, '\n')),
+  rules: {
+    source_file: $ => repeat(choice($.journal_item, '\n')),
 
-        journal_item: $ => choice(
-            $.comment,
-            $.directive,
-            $.xact,
-        ),
+    journal_item: $ => choice(
+      $.comment,
+      $.directive,
+      $.xact,
+    ),
 
-        comment: $ => seq(choice(';', '*'), /.*\n/),
+    comment: $ => seq(choice(';', '*'), /.*\n/),
 
-        indented_line: $ => seq($.whitespace, /[^\n]+\n/),
+    indented_line: $ => seq($.whitespace, /[^\n]+\n/),
 
-        // ! and @ are deprecated, let's not take them into account
-        directive: $ => choice(
-            $.account_directive,
-            $.commodity_directive,
-            $.word_directive,
-            $.char_directive,
-        ),
+    // ! and @ are deprecated, let's not take them into account
+    directive: $ => choice(
+      $.account_directive,
+      $.commodity_directive,
+      $.word_directive,
+      $.char_directive,
+    ),
 
-        account_directive: $ => seq(
-          seq("account", $.whitespace, $.account, "\n"),
-          repeat($.indented_line),
-        ),
+    account_directive: $ => seq(
+      seq("account", $.whitespace, $.account, '\n'),
+      repeat($.account_subdirective),
+    ),
 
-        commodity_directive: $ => seq(
-          seq("commodity", $.whitespace, $.commodity, '\n'),
-          repeat($.indented_line),
-        ),
+    account_subdirective: $ => choice(
+      $.alias_subdirective,
+      $.assert_subdirective,
+      $.check_subdirective,
+      $.default_subdirective,
+      $.eval_subdirective,
+      $.note_subdirective,
+      $.payee_subdirective,
+    ),
 
-        word_directive: $ => choice(
-            seq('include', /.+/),
-            'end',
-            seq('alias', /[^=]+/, '=', /.+/),
-            seq('def', /.+/),
-            seq('year', /\d{4}/),
-            seq('bucket', $.account),
-        ),
+    commodity_directive: $ => seq(
+      seq("commodity", $.whitespace, $.commodity, '\n'),
+      repeat($.commodity_subdirective),
+    ),
 
-        char_directive: $ => choice(
-            // timeclock.el
-            $.check_in,
-            $.check_out,
+    commodity_subdirective: $ => choice(
+      $.alias_subdirective,
+      $.default_subdirective,
+      $.format_subdirective,
+      $.note_subdirective,
+      $.nomarket_subdirective,
+    ),
 
-            seq('A', $.account),
-            seq('Y', /\d{4}/),
-            seq('N', $.commodity),
-            seq('D', $.amount),
-            seq('C', seq($.commodity, '=', $.amount)),
-            seq('P', seq($.date, $.commodity, $.amount))
-        ),
+    word_directive: $ => choice(
+      seq('include', /.+/),
+      'end',
+      seq('alias', /[^=]+/, '=', /.+/),
+      seq('def', /.+/),
+      seq('year', /\d{4}/),
+      seq('bucket', $.account),
+    ),
 
-        check_in: $ => seq(choice('i', 'I'), $.date, $.time, $.account, optional(seq($.spacer, $.payee))),
+    char_directive: $ => choice(
+      // timeclock.el
+      $.check_in,
+      $.check_out,
 
-        check_out: $ => seq(choice('o', 'O'), $.date, $.time),
+      seq('A', $.account),
+      seq('Y', /\d{4}/),
+      seq('N', $.commodity),
+      seq('D', $.amount),
+      seq('C', seq($.commodity, '=', $.amount)),
+      seq('P', seq($.date, $.commodity, $.amount))
+    ),
 
-        xact: $ => choice(
-            $.plain_xact,
-            // TODO $.periodic_xact,
-            // TODO $.automated_xact,
-        ),
+    alias_subdirective: $ => seq(
+      $.whitespace,
+      'alias',
+      $.whitespace,
+      /.+\n/,
+    ),
 
-        plain_xact: $ => seq(
-            seq($.date, optional(seq($.whitespace, $.status)), optional(seq($.whitespace, $.payee)), '\n'), // TODO code opt, note opt
-            repeat1(choice($.posting, seq($.whitespace, $.note, '\n'))),
-        ),
+    assert_subdirective: $ => seq(
+      $.whitespace,
+      'assert',
+      $.whitespace,
+      /.+\n/,
+    ),
 
-        // date, optionally with an effective date, e.g.:
-        // 2020-01-01
-        // 2020/01/01=2020.01-02
-        date: $ => seq($.single_date, optional(seq('=', $.single_date))),
+    check_subdirective: $ => seq(
+      $.whitespace,
+      'check',
+      $.whitespace,
+      /.+\n/,
+    ),
 
-        single_date: $ => /\d{4}[-\.\/]\d{2}[-\.\/]\d{2}/,
+    default_subdirective: $ => seq(
+      $.whitespace,
+      'default',
+      /\n/,
+    ),
 
-        time: $ => /\d{2}:\d{2}:\d{2}/,
+    eval_subdirective: $ => seq(
+      $.whitespace,
+      'eval',
+      $.whitespace,
+      /.+\n/,
+    ),
 
-        status: $ => choice('*', '!'),
+    format_subdirective: $ => seq(
+      $.whitespace,
+      "format",
+      $.whitespace,
+      $.amount,
+    ),
 
-        payee: $ => /[^*!\n]+/,
+    nomarket_subdirective: $ => seq(
+      $.whitespace,
+      "nomarket",
+      /\n/,
+    ),
 
-        note: $ => seq(';', /.*/),
+    note_subdirective: $ => seq(
+      $.whitespace,
+      "note",
+      $.whitespace,
+      /.+\n/,
+    ),
 
-        posting: $ => seq($.whitespace, optional($.status), $.account, optional($.values), optional($.note), '\n'),
+    payee_subdirective: $ => seq(
+      $.whitespace,
+      'payee',
+      $.whitespace,
+      /.+\n/,
+    ),
 
-        account: $ => alias(choice(
-            $.account_name,
-            seq('(', $.account_name, ')'),
-            seq('[', $.account_name, ']'),
-        ), ''),
+    check_in: $ => seq(choice('i', 'I'), $.date, $.time, $.account, optional(seq($.spacer, $.payee))),
 
-        // TODO can just use /(\p{L} \p{L}|\p{L})+/ once
-        // https://github.com/tree-sitter/tree-sitter/pull/906 is merged
-        account_name: $ => /[^ ;](\S \S|\S)+/,
+    check_out: $ => seq(choice('o', 'O'), $.date, $.time),
 
-        values: $ => seq($.spacer, $.amount, optional($.price), optional($.balance_assertion)),
+    xact: $ => choice(
+      $.plain_xact,
+      // TODO $.periodic_xact,
+      // TODO $.automated_xact,
+    ),
 
-        amount: $ => choice(
-            seq($.quantity, $.commodity),
-            seq($.commodity, $.quantity),
-        ),
+    plain_xact: $ => seq(
+      seq($.date, optional(seq($.whitespace, $.status)), optional(seq($.whitespace, $.payee)), '\n'), // TODO code opt, note opt
+      repeat1(choice($.posting, seq($.whitespace, $.note, '\n'))),
+    ),
 
-        quantity: $ => seq(
-            optional('-'), /\d([\d., ]*\d)?/,
-        ),
+    // date, optionally with an effective date, e.g.:
+    // 2020-01-01
+    // 2020/01/01=2020.01-02
+    date: $ => seq($.single_date, optional(seq('=', $.single_date))),
 
-        commodity: $ => choice(/[a-zA-Z]+/, /"[^"\n]*"/),
+    single_date: $ => /\d{4}[-\.\/]\d{2}[-\.\/]\d{2}/,
 
-        price: $ => seq(choice('@', '@@'), $.amount),
+    time: $ => /\d{2}:\d{2}:\d{2}/,
 
-        balance_assertion: $ => seq('=', choice($.amount)),
+    status: $ => choice('*', '!'),
 
-        whitespace: $ => repeat1(choice(' ', '\t')),
+    payee: $ => /[^*!\n]+/,
 
-        spacer: $ => choice('  ', '\t', ' \t'),
-    }
+    note: $ => seq(';', /.*/),
+
+    posting: $ => seq($.whitespace, optional($.status), $.account, optional($.values), optional($.note), '\n'),
+
+    account: $ => alias(choice(
+      $.account_name,
+      seq('(', $.account_name, ')'),
+      seq('[', $.account_name, ']'),
+    ), ''),
+
+    // TODO can just use /(\p{L} \p{L}|\p{L})+/ once
+    // https://github.com/tree-sitter/tree-sitter/pull/906 is merged
+    account_name: $ => /[^ ;](\S \S|\S)+/,
+
+    values: $ => seq($.spacer, $.amount, optional($.price), optional($.balance_assertion)),
+
+    amount: $ => choice(
+      seq($.quantity, $.commodity),
+      seq($.commodity, $.quantity),
+    ),
+
+    quantity: $ => seq(
+      optional('-'), /\d([\d., ]*\d)?/,
+    ),
+
+    commodity: $ => choice(/[a-zA-Z]+/, /"[^"\n]*"/),
+
+    price: $ => seq(choice('@', '@@'), $.amount),
+
+    balance_assertion: $ => seq('=', choice($.amount)),
+
+    whitespace: $ => repeat1(choice(' ', '\t')),
+
+    spacer: $ => choice('  ', '\t', ' \t'),
+  }
 })
