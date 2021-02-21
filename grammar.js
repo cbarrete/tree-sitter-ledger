@@ -152,8 +152,15 @@ module.exports = grammar({
         ),
 
         plain_xact: $ => seq(
-            seq($.date, optional(seq($.whitespace, $.status)), optional(seq($.whitespace, $.payee)), '\n'), // TODO code opt, note opt
-            repeat1(choice($.posting, seq($.whitespace, $.note, '\n'))),
+            seq(
+                $.date,
+                optional(seq($.whitespace, $.status)),
+                optional(seq($.whitespace, $.payee)),
+                '\n'), // TODO code opt, note opt
+            repeat1(
+                choice(
+                    $.posting,
+                    seq($.whitespace, $.note, '\n'))),
         ),
 
         // date, optionally with an effective date, e.g.:
