@@ -27,7 +27,7 @@ module.exports = grammar({
         ),
 
         account_directive: $ => seq(
-            seq("account", $.whitespace, $.account, '\n'),
+            seq('account', $.whitespace, $.account, '\n'),
             repeat($.account_subdirective),
         ),
 
@@ -42,7 +42,7 @@ module.exports = grammar({
         ),
 
         commodity_directive: $ => seq(
-            seq("commodity", $.whitespace, $.commodity, '\n'),
+            seq('commodity', $.whitespace, $.commodity, '\n'),
             repeat($.commodity_subdirective),
         ),
 
@@ -112,20 +112,20 @@ module.exports = grammar({
 
         format_subdirective: $ => seq(
             $.whitespace,
-            "format",
+            'format',
             $.whitespace,
             $.amount,
         ),
 
         nomarket_subdirective: $ => seq(
             $.whitespace,
-            "nomarket",
+            'nomarket',
             /\n/,
         ),
 
         note_subdirective: $ => seq(
             $.whitespace,
-            "note",
+            'note',
             $.whitespace,
             /.+\n/,
         ),
