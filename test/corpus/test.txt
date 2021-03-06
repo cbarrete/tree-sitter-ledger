@@ -751,6 +751,7 @@ UTF-8 commodity names
 
 2020-12-02
     Expenses:Food:Groceries  2 "Hoi Zäme"
+    Expenses:Food:Groceries  2 Zäme
 
 ---
 
@@ -758,6 +759,7 @@ UTF-8 commodity names
   (journal_item (xact
       (plain_xact
         (date (single_date))
+        (posting (account) (values (spacer) (amount (quantity) (commodity))))
         (posting (account) (values (spacer) (amount (quantity) (commodity))))))))
 
 ===
