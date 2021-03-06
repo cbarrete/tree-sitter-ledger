@@ -940,7 +940,7 @@
     },
     "account_name": {
       "type": "PATTERN",
-      "value": "[^ ;](\\S \\S|\\S)+"
+      "value": "(\\p{L} \\p{L}|\\p{L}:?)+"
     },
     "values": {
       "type": "SEQ",

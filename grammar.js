@@ -175,9 +175,7 @@ module.exports = grammar({
             seq('[', $.account_name, ']'),
         ), ''),
 
-        // TODO can just use /(\p{L} \p{L}|\p{L})+/ once
-        // https://github.com/tree-sitter/tree-sitter/pull/906 is merged
-        account_name: $ => /[^ ;](\S \S|\S)+/,
+        account_name: $ => /(\p{L} \p{L}|\p{L}:?)+/,
 
         values: $ => seq($.spacer, $.amount, optional($.price), optional($.balance_assertion)),
 
