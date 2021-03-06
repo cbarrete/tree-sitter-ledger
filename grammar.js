@@ -190,7 +190,7 @@ module.exports = grammar({
             optional('-'), /\d([\d., ]*\d)?/,
         ),
 
-        commodity: $ => choice(/[a-zA-Z]+/, /"[^"\n]*"/),
+        commodity: $ => choice(/\p{L}+/, /"[^"\n]*"/),
 
         price: $ => seq(choice('@', '@@'), $.amount),
 

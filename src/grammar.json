@@ -1036,7 +1036,7 @@
       "members": [
         {
           "type": "PATTERN",
-          "value": "[a-zA-Z]+"
+          "value": "\\p{L}+"
         },
         {
           "type": "PATTERN",

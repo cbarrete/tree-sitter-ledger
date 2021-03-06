@@ -744,3 +744,34 @@ various quantity formats
         (posting (account) (values (spacer) (amount (quantity) (commodity))))
         (posting (account) (values (spacer) (amount (quantity) (commodity))))
         ))))
+
+===
+UTF-8 commodity names
+===
+
+2020-12-02
+    Expenses:Food:Groceries  2 "Hoi Zäme"
+
+---
+
+(source_file
+  (journal_item (xact
+      (plain_xact
+        (date (single_date))
+        (posting (account) (values (spacer) (amount (quantity) (commodity))))))))
+
+===
+UTF-8 account name
+===
+
+2020-12-02
+    Dépenses:Grosse Dépense
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date (single_date))
+        (posting (account))))))
