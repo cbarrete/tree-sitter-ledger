@@ -791,7 +791,7 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           ('a' <= lookahead && lookahead <= 'z')) ADVANCE(168);
       END_STATE();
     case 4:
-      if (lookahead == '\t') ADVANCE(187);
+      if (lookahead == '\t') ADVANCE(183);
       if (lookahead == ' ') ADVANCE(172);
       if (lookahead == '!') ADVANCE(154);
       if (lookahead == '(') ADVANCE(159);
@@ -801,8 +801,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead != 0) ADVANCE(108);
       END_STATE();
     case 5:
-      if (lookahead == '\t') ADVANCE(186);
-      if (lookahead == ' ') ADVANCE(179);
+      if (lookahead == '\t') ADVANCE(184);
+      if (lookahead == ' ') ADVANCE(176);
       if (lookahead == '!') ADVANCE(153);
       if (lookahead == '*') ADVANCE(115);
       if (lookahead != 0 &&
@@ -815,8 +815,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
           lookahead != '\n') ADVANCE(10);
       END_STATE();
     case 7:
-      if (lookahead == '\t') ADVANCE(185);
-      if (lookahead == ' ') ADVANCE(178);
+      if (lookahead == '\t') ADVANCE(187);
+      if (lookahead == ' ') ADVANCE(179);
       if (lookahead != 0 &&
           lookahead != '=') ADVANCE(124);
       END_STATE();
@@ -827,8 +827,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       if (lookahead != 0) ADVANCE(11);
       END_STATE();
     case 9:
-      if (lookahead == '\t') ADVANCE(184);
-      if (lookahead == ' ') ADVANCE(177);
+      if (lookahead == '\t') ADVANCE(186);
+      if (lookahead == ' ') ADVANCE(178);
       if (lookahead != 0 &&
           lookahead != '\n') ADVANCE(121);
       END_STATE();
@@ -1365,8 +1365,8 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       END_STATE();
     case 156:
       ACCEPT_TOKEN(aux_sym_note_token1);
-      if (lookahead == '\t') ADVANCE(183);
-      if (lookahead == ' ') ADVANCE(176);
+      if (lookahead == '\t') ADVANCE(185);
+      if (lookahead == ' ') ADVANCE(177);
       if (lookahead != 0 &&
           lookahead != '\n') ADVANCE(157);
       END_STATE();
@@ -1465,24 +1465,24 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 176:
       ACCEPT_TOKEN(anon_sym_);
       if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(157);
+          lookahead != '\n' &&
+          lookahead != '!' &&
+          lookahead != '*') ADVANCE(155);
       END_STATE();
     case 177:
       ACCEPT_TOKEN(anon_sym_);
       if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(121);
+          lookahead != '\n') ADVANCE(157);
       END_STATE();
     case 178:
       ACCEPT_TOKEN(anon_sym_);
       if (lookahead != 0 &&
-          lookahead != '=') ADVANCE(124);
+          lookahead != '\n') ADVANCE(121);
       END_STATE();
     case 179:
       ACCEPT_TOKEN(anon_sym_);
       if (lookahead != 0 &&
-          lookahead != '\n' &&
-          lookahead != '!' &&
-          lookahead != '*') ADVANCE(155);
+          lookahead != '=') ADVANCE(124);
       END_STATE();
     case 180:
       ACCEPT_TOKEN(anon_sym_TAB);
@@ -1500,32 +1500,32 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
     case 183:
       ACCEPT_TOKEN(anon_sym_TAB);
       if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(157);
+          lookahead != '\t' &&
+          lookahead != '\n' &&
+          lookahead != '\r' &&
+          lookahead != ' ') ADVANCE(164);
       END_STATE();
     case 184:
-      ACCEPT_TOKEN(anon_sym_TAB);
-      if (lookahead != 0 &&
-          lookahead != '\n') ADVANCE(121);
-      END_STATE();
-    case 185:
-      ACCEPT_TOKEN(anon_sym_TAB);
-      if (lookahead != 0 &&
-          lookahead != '=') ADVANCE(124);
-      END_STATE();
-    case 186:
       ACCEPT_TOKEN(anon_sym_TAB);
       if (lookahead != 0 &&
           lookahead != '\n' &&
           lookahead != '!' &&
           lookahead != '*') ADVANCE(155);
       END_STATE();
+    case 185:
+      ACCEPT_TOKEN(anon_sym_TAB);
+      if (lookahead != 0 &&
+          lookahead != '\n') ADVANCE(157);
+      END_STATE();
+    case 186:
+      ACCEPT_TOKEN(anon_sym_TAB);
+      if (lookahead != 0 &&
+          lookahead != '\n') ADVANCE(121);
+      END_STATE();
     case 187:
       ACCEPT_TOKEN(anon_sym_TAB);
       if (lookahead != 0 &&
-          lookahead != '\t' &&
-          lookahead != '\n' &&
-          lookahead != '\r' &&
-          lookahead != ' ') ADVANCE(164);
+          lookahead != '=') ADVANCE(124);
       END_STATE();
     case 188:
       ACCEPT_TOKEN(anon_sym_2);
