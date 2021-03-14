@@ -406,6 +406,10 @@
           "named": true
         },
         {
+          "type": "amount",
+          "named": true
+        },
+        {
           "type": "balance_assertion",
           "named": true
         },
@@ -414,11 +418,11 @@
           "named": true
         },
         {
-          "type": "status",
+          "type": "price",
           "named": true
         },
         {
-          "type": "values",
+          "type": "status",
           "named": true
         }
       ]
@@ -463,25 +467,6 @@
     "type": "status",
     "named": true,
     "fields": {}
-  },
-  {
-    "type": "values",
-    "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "amount",
-          "named": true
-        },
-        {
-          "type": "price",
-          "named": true
-        }
-      ]
-    }
   },
   {
     "type": "word_directive",

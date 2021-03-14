@@ -1,7 +1,7 @@
 module.exports = grammar({
     name: 'ledger',
 
-    extras: $ => [' ', '\t'],
+    extras: $ => [],
 
     inline: $ => [
         $.indented_line,
@@ -59,12 +59,28 @@ module.exports = grammar({
         ),
 
         word_directive: $ => choice(
-            seq('include', /.+/),
+            seq(
+                'include',
+                $.whitespace,
+                /.+/,
+            ),
             'end',
-            seq('alias', /[^=]+/, '=', /.+/),
-            seq('def', /.+/),
-            seq('year', /\d{4}/),
-            seq('bucket', $.account),
+            seq('alias', $.whitespace, /[^=]+/, '=', /.+/),
+            seq(
+                'def',
+                $.whitespace,
+                /.+/,
+            ),
+            seq(
+                'year',
+                $.whitespace,
+                /\d{4}/,
+            ),
+            seq(
+                'bucket',
+                $.whitespace,
+                $.account,
+            ),
         ),
 
         char_directive: $ => choice(
@@ -72,12 +88,26 @@ module.exports = grammar({
             $.check_in,
             $.check_out,
 
-            seq('A', $.account),
-            seq('Y', /\d{4}/),
-            seq('N', $.commodity),
-            seq('D', $.amount),
-            seq('C', seq($.commodity, '=', $.amount)),
-            seq('P', seq($.date, $.commodity, $.amount))
+            seq('A', $.whitespace, $.account),
+            seq('Y', $.whitespace, /\d{4}/),
+            seq('N', $.whitespace, $.commodity),
+            seq('D', $.whitespace, $.amount),
+            seq('C', $.whitespace,
+                seq($.commodity,
+                    optional($.whitespace), '=',
+                    optional($.whitespace),
+                    $.amount)),
+            seq(
+                'P',
+                $.whitespace,
+                seq(
+                    $.date,
+                    $.whitespace,
+                    $.commodity,
+                    optional($.whitespace),
+                    $.amount,
+                ),
+            )
         ),
 
         alias_subdirective: $ => seq(
@@ -141,9 +171,25 @@ module.exports = grammar({
             /.+\n/,
         ),
 
-        check_in: $ => seq(choice('i', 'I'), $.date, $.time, $.account, optional(seq($.spacer, $.payee))),
+        check_in: $ => seq(choice('i', 'I'),
+            optional($.whitespace),
+            $.date,
+            optional($.whitespace),
+            $.time,
+            optional($.whitespace),
+            $.account,
+            optional(
+                seq($.spacer,
+                optional($.whitespace),
+                $.payee),
+            ),
+        ),
 
-        check_out: $ => seq(choice('o', 'O'), $.date, $.time),
+        check_out: $ => seq(choice('o', 'O'),
+            optional($.whitespace),
+            $.date,
+            optional($.whitespace),
+            $.time),
 
         xact: $ => choice(
             $.plain_xact,
@@ -180,14 +226,15 @@ module.exports = grammar({
 
         posting: $ => seq(
             $.whitespace,
-            optional($.status),
+            optional(seq($.status, optional($.whitespace))),
             $.account,
             optional(seq(
                 $.spacer,
-                optional($.values),
-                optional($.balance_assertion),
+                optional(seq(optional($.whitespace), $.amount)),
+                optional(seq(optional($.whitespace), $.price)),
+                optional(seq(optional($.whitespace), $.balance_assertion)),
+                optional(seq(optional($.whitespace), $.note)),
             )),
-            optional($.note),
             '\n'),
 
         account: $ => alias(choice(
@@ -198,11 +245,15 @@ module.exports = grammar({
 
         account_name: $ => /(\p{L} \p{L}|\p{L}:?)+/,
 
-        values: $ => seq($.amount, optional($.price)),
-
         amount: $ => choice(
-            seq($.quantity, $.commodity),
-            seq($.commodity, $.quantity),
+            seq(
+              $.quantity,
+              optional($.whitespace),
+              $.commodity),
+            seq(
+              $.commodity,
+              optional($.whitespace),
+              $.quantity),
         ),
 
         quantity: $ => seq(
@@ -211,9 +262,17 @@ module.exports = grammar({
 
         commodity: $ => choice(/\p{L}+/, /"[^"\n]*"/),
 
-        price: $ => seq(choice('@', '@@'), $.amount),
+        price: $ => seq(
+            choice('@', '@@'),
+            optional($.whitespace),
+            $.amount,
+        ),
 
-        balance_assertion: $ => seq('=', choice($.amount)),
+        balance_assertion: $ => seq(
+            '=',
+            optional($.whitespace),
+            choice($.amount),
+        ),
 
         whitespace: $ => repeat1(choice(' ', '\t')),
 
