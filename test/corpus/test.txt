@@ -332,6 +332,7 @@ with price and balance assertion
 2020-12-04
     Assets:Broker                           -15 INTC @ 60 USD = 0 INTC
     Assets:Broker                            900 USD
+    Assets:Empty Account                                      = 0 USD
 
 ---
 
@@ -349,14 +350,20 @@ with price and balance assertion
             (price
               (amount
                 (quantity)
-                (commodity)))
-            (balance_assertion
-              (amount
-                (quantity)
-                (commodity)))))
+                (commodity))))
+          (balance_assertion
+            (amount
+              (quantity)
+              (commodity))))
         (posting
           (account)
           (values
+            (amount
+              (quantity)
+              (commodity))))
+        (posting
+          (account)
+          (balance_assertion
             (amount
               (quantity)
               (commodity))))

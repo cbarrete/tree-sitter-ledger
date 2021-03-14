@@ -406,6 +406,10 @@
           "named": true
         },
         {
+          "type": "balance_assertion",
+          "named": true
+        },
+        {
           "type": "note",
           "named": true
         },
@@ -470,10 +474,6 @@
       "types": [
         {
           "type": "amount",
-          "named": true
-        },
-        {
-          "type": "balance_assertion",
           "named": true
         },
         {

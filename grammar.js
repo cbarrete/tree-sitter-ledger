@@ -171,7 +171,17 @@ module.exports = grammar({
 
         note: $ => seq(';', /.*/),
 
-        posting: $ => seq($.whitespace, optional($.status), $.account, optional($.values), optional($.note), '\n'),
+        posting: $ => seq(
+            $.whitespace,
+            optional($.status),
+            $.account,
+            optional(seq(
+                $.spacer,
+                optional($.values),
+                optional($.balance_assertion),
+            )),
+            optional($.note),
+            '\n'),
 
         account: $ => alias(choice(
             $.account_name,
@@ -181,7 +191,7 @@ module.exports = grammar({
 
         account_name: $ => /(\p{L} \p{L}|\p{L}:?)+/,
 
-        values: $ => seq($.spacer, $.amount, optional($.price), optional($.balance_assertion)),
+        values: $ => seq($.amount, optional($.price)),
 
         amount: $ => choice(
             seq($.quantity, $.commodity),
