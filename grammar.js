@@ -3,7 +3,11 @@ module.exports = grammar({
 
     extras: $ => [' ', '\t'],
 
-    inline: $ => [$.indented_line, $.whitespace],
+    inline: $ => [
+        $.indented_line,
+        $.spacer,
+        $.whitespace,
+    ],
 
     rules: {
         source_file: $ => repeat(choice($.journal_item, '\n')),

@@ -1129,9 +1129,11 @@
     }
   ],
   "conflicts": [],
+  "precedences": [],
   "externals": [],
   "inline": [
     "indented_line",
+    "spacer",
     "whitespace"
   ],
   "supertypes": []

@@ -162,10 +162,6 @@
           "named": true
         },
         {
-          "type": "spacer",
-          "named": true
-        },
-        {
           "type": "time",
           "named": true
         }
@@ -460,11 +456,6 @@
     }
   },
   {
-    "type": "spacer",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "status",
     "named": true,
     "fields": {}
@@ -487,10 +478,6 @@
         },
         {
           "type": "price",
-          "named": true
-        },
-        {
-          "type": "spacer",
           "named": true
         }
       ]
