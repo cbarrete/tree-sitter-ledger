@@ -26,8 +26,8 @@ module.exports = grammar({
         directive: $ => choice(
             $.account_directive,
             $.commodity_directive,
-            $.word_directive,
-            $.char_directive,
+            seq($.word_directive, '\n'),
+            seq($.char_directive, '\n'),
         ),
 
         account_directive: $ => seq(

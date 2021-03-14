@@ -81,12 +81,30 @@
           "name": "commodity_directive"
         },
         {
-          "type": "SYMBOL",
-          "name": "word_directive"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "word_directive"
+            },
+            {
+              "type": "STRING",
+              "value": "\n"
+            }
+          ]
         },
         {
-          "type": "SYMBOL",
-          "name": "char_directive"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "char_directive"
+            },
+            {
+              "type": "STRING",
+              "value": "\n"
+            }
+          ]
         }
       ]
     },
