@@ -107,7 +107,6 @@ with amount
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))))))))
@@ -129,7 +128,6 @@ with amount that has commodity first
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (commodity)
               (quantity))))))))
@@ -236,7 +234,6 @@ virtual postings
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))))
@@ -244,14 +241,12 @@ virtual postings
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))))
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))))))))
@@ -276,7 +271,6 @@ postings with status
           (status)
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))))
@@ -284,7 +278,6 @@ postings with status
           (status)
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))))
@@ -311,7 +304,6 @@ with price
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))
@@ -322,14 +314,12 @@ with price
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))))
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
              (commodity))))))))
@@ -353,7 +343,6 @@ with price and balance assertion
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))
@@ -368,7 +357,6 @@ with price and balance assertion
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))))
@@ -509,7 +497,6 @@ multiple xacts
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))))
@@ -524,7 +511,6 @@ multiple xacts
         (posting
           (account)
           (values
-            (spacer)
             (amount
               (quantity)
               (commodity))))
@@ -573,7 +559,7 @@ notes
         (note)
         (posting
           (account)
-          (values (spacer) (amount (quantity) (commodity)))
+          (values (amount (quantity) (commodity)))
           (note))
         (note)
         (posting (account))))))
@@ -619,7 +605,6 @@ O 2013/03/29 03:39:00
           (date (single_date))
           (time)
           (account)
-          (spacer)
           (payee)))))
   (journal_item
     (directive
@@ -725,7 +710,7 @@ C "Foo" = 1.20 "Foo Bar"
   (journal_item (xact
       (plain_xact
         (date (single_date))
-        (posting (account) (values (spacer) (amount (quantity) (commodity))))))))
+        (posting (account) (values (amount (quantity) (commodity))))))))
 
 ===
 various quantity formats
@@ -741,8 +726,8 @@ various quantity formats
   (journal_item (xact
       (plain_xact
         (date (single_date))
-        (posting (account) (values (spacer) (amount (quantity) (commodity))))
-        (posting (account) (values (spacer) (amount (quantity) (commodity))))
+        (posting (account) (values (amount (quantity) (commodity))))
+        (posting (account) (values (amount (quantity) (commodity))))
         ))))
 
 ===
@@ -759,8 +744,8 @@ UTF-8 commodity names
   (journal_item (xact
       (plain_xact
         (date (single_date))
-        (posting (account) (values (spacer) (amount (quantity) (commodity))))
-        (posting (account) (values (spacer) (amount (quantity) (commodity))))))))
+        (posting (account) (values (amount (quantity) (commodity))))
+        (posting (account) (values (amount (quantity) (commodity))))))))
 
 ===
 UTF-8 account name
