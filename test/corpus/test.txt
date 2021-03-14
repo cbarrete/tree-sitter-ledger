@@ -106,10 +106,9 @@ with amount
         (date (single_date))
         (posting
           (account)
-          (values
-            (amount
-              (quantity)
-              (commodity))))))))
+          (amount
+            (quantity)
+            (commodity)))))))
 
 
 ===
@@ -127,10 +126,9 @@ with amount that has commodity first
         (date (single_date))
         (posting
           (account)
-          (values
-            (amount
-              (commodity)
-              (quantity))))))))
+          (amount
+            (commodity)
+            (quantity)))))))
 
 
 ===
@@ -233,23 +231,20 @@ virtual postings
         (date (single_date))
         (posting
           (account)
-          (values
-            (amount
-              (quantity)
-              (commodity))))
+          (amount
+            (quantity)
+            (commodity)))
         (posting (account))
         (posting
           (account)
-          (values
-            (amount
-              (quantity)
-              (commodity))))
+          (amount
+            (quantity)
+            (commodity)))
         (posting
           (account)
-          (values
-            (amount
-              (quantity)
-              (commodity))))))))
+          (amount
+            (quantity)
+            (commodity)))))))
 
 
 ===
@@ -270,17 +265,15 @@ postings with status
         (posting
           (status)
           (account)
-          (values
-            (amount
-              (quantity)
-              (commodity))))
+          (amount
+            (quantity)
+            (commodity)))
         (posting
           (status)
           (account)
-          (values
-            (amount
-              (quantity)
-              (commodity))))
+          (amount
+            (quantity)
+            (commodity)))
         ))))
 
 
@@ -303,26 +296,23 @@ with price
         (payee)
         (posting
           (account)
-          (values
-            (amount
-              (quantity)
-              (commodity))
-            (price
-              (amount
-                (quantity)
-                (commodity)))))
-        (posting
-          (account)
-          (values
+          (amount
+            (quantity)
+            (commodity))
+          (price
             (amount
               (quantity)
               (commodity))))
         (posting
           (account)
-          (values
-            (amount
-              (quantity)
-             (commodity))))))))
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))))))
 
 
 ===
@@ -343,24 +333,22 @@ with price and balance assertion
         (date (single_date))
         (posting
           (account)
-          (values
+          (amount
+            (quantity)
+            (commodity))
+          (price
             (amount
               (quantity)
-              (commodity))
-            (price
-              (amount
-                (quantity)
-                (commodity))))
+              (commodity)))
           (balance_assertion
             (amount
               (quantity)
               (commodity))))
         (posting
           (account)
-          (values
-            (amount
-              (quantity)
-              (commodity))))
+          (amount
+            (quantity)
+            (commodity)))
         (posting
           (account)
           (balance_assertion
@@ -503,10 +491,9 @@ multiple xacts
         (payee)
         (posting
           (account)
-          (values
-            (amount
-              (quantity)
-              (commodity))))
+          (amount
+            (quantity)
+            (commodity)))
         (posting
           (account)))))
   (journal_item
@@ -517,10 +504,9 @@ multiple xacts
         (payee)
         (posting
           (account)
-          (values
-            (amount
-              (quantity)
-              (commodity))))
+          (amount
+            (quantity)
+            (commodity)))
         (posting
           (account))))))
 
@@ -566,7 +552,7 @@ notes
         (note)
         (posting
           (account)
-          (values (amount (quantity) (commodity)))
+          (amount (quantity) (commodity))
           (note))
         (note)
         (posting (account))))))
@@ -717,7 +703,7 @@ C "Foo" = 1.20 "Foo Bar"
   (journal_item (xact
       (plain_xact
         (date (single_date))
-        (posting (account) (values (amount (quantity) (commodity))))))))
+        (posting (account) (amount (quantity) (commodity)))))))
 
 ===
 various quantity formats
@@ -733,8 +719,8 @@ various quantity formats
   (journal_item (xact
       (plain_xact
         (date (single_date))
-        (posting (account) (values (amount (quantity) (commodity))))
-        (posting (account) (values (amount (quantity) (commodity))))
+        (posting (account) (amount (quantity) (commodity)))
+        (posting (account) (amount (quantity) (commodity)))
         ))))
 
 ===
@@ -751,8 +737,8 @@ UTF-8 commodity names
   (journal_item (xact
       (plain_xact
         (date (single_date))
-        (posting (account) (values (amount (quantity) (commodity))))
-        (posting (account) (values (amount (quantity) (commodity))))))))
+        (posting (account) (amount (quantity) (commodity)))
+        (posting (account) (amount (quantity) (commodity)))))))
 
 ===
 UTF-8 account name
@@ -769,3 +755,9 @@ UTF-8 account name
       (plain_xact
         (date (single_date))
         (posting (account))))))
+===
+invalid directive, because it's indented
+===
+    A Account
+---
+  (source_file (ERROR (date (MISSING single_date)) (payee)))
