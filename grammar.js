@@ -247,13 +247,13 @@ module.exports = grammar({
 
         amount: $ => choice(
             seq(
-              $.quantity,
-              optional($.whitespace),
-              $.commodity),
+                $.quantity,
+                optional($.whitespace),
+                $.commodity),
             seq(
-              $.commodity,
-              optional($.whitespace),
-              $.quantity),
+                $.commodity,
+                optional($.whitespace),
+                $.quantity),
         ),
 
         quantity: $ => seq(
