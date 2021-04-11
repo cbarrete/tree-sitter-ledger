@@ -756,6 +756,51 @@ UTF-8 account name
         (date (single_date))
         (posting (account))))))
 ===
+Numeric account name
+===
+
+2021-01-01
+    State:2021:Tax
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date (single_date))
+        (posting (account))))))
+===
+Account name with a hyphen
+===
+
+2021-01-01
+    Bank:Account-Name
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date (single_date))
+        (posting (account))))))
+===
+Single letter account name
+===
+
+2021-01-01
+    A
+
+---
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date (single_date))
+        (posting (account))))))
+===
 invalid directive, because it's indented
 ===
     A Account
