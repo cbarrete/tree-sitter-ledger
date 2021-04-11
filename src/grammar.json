@@ -1240,7 +1240,7 @@
     },
     "account_name": {
       "type": "PATTERN",
-      "value": "(\\p{L} \\p{L}|\\p{L}:?)+"
+      "value": "[^ ;](\\S \\S|\\S)*"
     },
     "amount": {
       "type": "CHOICE",
