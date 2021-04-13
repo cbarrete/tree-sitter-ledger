@@ -773,11 +773,11 @@ numeric account name
         (posting (account))))))
 
 ===
-account name with a hyphen
+account name with symbols
 ===
 
 2021-01-01
-    Bank:Account-Name
+    Bank:Account-Name&Oth€r$ymbols
 
 ---
 
