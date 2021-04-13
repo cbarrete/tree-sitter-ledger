@@ -755,6 +755,7 @@ UTF-8 account name
       (plain_xact
         (date (single_date))
         (posting (account))))))
+
 ===
 numeric account name
 ===
@@ -770,6 +771,7 @@ numeric account name
       (plain_xact
         (date (single_date))
         (posting (account))))))
+
 ===
 account name with a hyphen
 ===
@@ -785,6 +787,7 @@ account name with a hyphen
       (plain_xact
         (date (single_date))
         (posting (account))))))
+
 ===
 single letter account name
 ===
@@ -800,9 +803,11 @@ single letter account name
       (plain_xact
         (date (single_date))
         (posting (account))))))
+
 ===
 invalid directive, because it's indented
 ===
     A Account
 ---
-  (source_file (ERROR (date (MISSING single_date)) (payee)))
+
+(source_file (ERROR (date (MISSING single_date)) (payee)))
