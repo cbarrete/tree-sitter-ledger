@@ -756,7 +756,7 @@ UTF-8 account name
         (date (single_date))
         (posting (account))))))
 ===
-Numeric account name
+numeric account name
 ===
 
 2021-01-01
@@ -771,7 +771,7 @@ Numeric account name
         (date (single_date))
         (posting (account))))))
 ===
-Account name with a hyphen
+account name with a hyphen
 ===
 
 2021-01-01
@@ -786,7 +786,7 @@ Account name with a hyphen
         (date (single_date))
         (posting (account))))))
 ===
-Single letter account name
+single letter account name
 ===
 
 2021-01-01
