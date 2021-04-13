@@ -1431,7 +1431,6 @@
   },
   "extras": [],
   "conflicts": [],
-  "precedences": [],
   "externals": [],
   "inline": [
     "indented_line",
