@@ -1,163 +1,165 @@
-===
+================================================================================
 empty
-===
+================================================================================
 
----
+--------------------------------------------------------------------------------
 
 (source_file)
 
-
-===
+================================================================================
 without payee
-===
+================================================================================
 2020-12-02
     Expenses:Food:Groceries
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
-        (posting (account))))))
+        (date
+          (single_date))
+        (posting
+          (account))))))
 
-
-===
+================================================================================
 with payee
-===
+================================================================================
 2020-12-02 Market
     Expenses:Food:Groceries
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (payee)
-        (posting (account))))))
+        (posting
+          (account))))))
 
-
-===
+================================================================================
 with full payee
-===
+================================================================================
 2020-12-02 Local Market
     Expenses:Food:Groceries
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (payee)
-        (posting (account))))))
+        (posting
+          (account))))))
 
-
-===
+================================================================================
 with cleared status
-===
+================================================================================
 2020-12-02 *
     Expenses:Food:Groceries
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (status)
-        (posting (account))))))
+        (posting
+          (account))))))
 
-
-===
+================================================================================
 with pending status
-===
+================================================================================
 2020-12-02 !
     Expenses:Food:Groceries
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (status)
-        (posting (account))))))
+        (posting
+          (account))))))
 
-
-===
+================================================================================
 with amount
-===
+================================================================================
 2020-12-02
     Expenses:Food:Groceries  2 EUR
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (posting
           (account)
           (amount
             (quantity)
             (commodity)))))))
 
-
-===
+================================================================================
 with amount that has commodity first
-===
+================================================================================
 2020-12-02
     Expenses:Food:Groceries  EUR 2
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (posting
           (account)
           (amount
             (commodity)
             (quantity)))))))
 
-
-===
+================================================================================
 with ; comment
-===
+================================================================================
 ; hello
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (comment)))
 
-
-===
+================================================================================
 with * comment
-===
+================================================================================
 * hello
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (comment)))
 
-
-===
+================================================================================
 date formats
-===
+================================================================================
 
 2020-12-02
     Expenses:Food:Groceries
@@ -171,50 +173,60 @@ date formats
 2020/12-02
     Expenses:Food:Groceries
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
-        (posting (account)))))
+        (date
+          (single_date))
+        (posting
+          (account)))))
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
-        (posting (account)))))
+        (date
+          (single_date))
+        (posting
+          (account)))))
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
-        (posting (account)))))
+        (date
+          (single_date))
+        (posting
+          (account)))))
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
-        (posting (account))))))
+        (date
+          (single_date))
+        (posting
+          (account))))))
 
-
-===
+================================================================================
 effective date
-===
+================================================================================
 
 2020-12-02=2020-12-03
     Expenses:Food:Groceries
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date) (single_date))
-        (posting (account))))))
+        (date
+          (single_date)
+          (single_date))
+        (posting
+          (account))))))
 
-===
+================================================================================
 virtual postings
-===
+================================================================================
 
 2012-03-10
     Expenses:Food                20.00 u
@@ -222,19 +234,21 @@ virtual postings
     [Budget:Food]               -20.00 u
     [Equity:Budgets]             20.00 u
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (posting
           (account)
           (amount
             (quantity)
             (commodity)))
-        (posting (account))
+        (posting
+          (account))
         (posting
           (account)
           (amount
@@ -246,22 +260,22 @@ virtual postings
             (quantity)
             (commodity)))))))
 
-
-===
+================================================================================
 postings with status
-===
+================================================================================
 
 2012-03-10
     * Assets:Bank A                 -20.00 u
     ! Assets:Bank B                  20.00 u
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (posting
           (status)
           (account)
@@ -273,26 +287,26 @@ postings with status
           (account)
           (amount
             (quantity)
-            (commodity)))
-        ))))
+            (commodity)))))))
 
-
-===
+================================================================================
 with price
-===
+================================================================================
 
 2020-12-04=2020-12-05 Selling INTC
     Assets:Broker                           -15 INTC @ 60 USD
     Assets:Broker                            899 USD
     Expenses:Broker:Fees                       1 USD
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date) (single_date))
+        (date
+          (single_date)
+          (single_date))
         (payee)
         (posting
           (account)
@@ -314,23 +328,23 @@ with price
             (quantity)
             (commodity)))))))
 
-
-===
+================================================================================
 with price and balance assertion
-===
+================================================================================
 
 2020-12-04
     Assets:Broker                           -15 INTC @ 60 USD = 0 INTC
     Assets:Broker                            900 USD
     Assets:Empty Account                                      = 0 USD
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (posting
           (account)
           (amount
@@ -354,63 +368,60 @@ with price and balance assertion
           (balance_assertion
             (amount
               (quantity)
-              (commodity))))
-        ))))
+              (commodity))))))))
 
-===
+================================================================================
 import
-===
+================================================================================
 
 include other.journal
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (directive
       (word_directive))))
 
-
-===
+================================================================================
 account declaration
-===
+================================================================================
 
 account Assets:Bank Account
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (directive
-      (account_directive (account)))))
+      (account_directive
+        (account)))))
 
-
-===
+================================================================================
 account with notes
-===
+================================================================================
 
 account Assets:Bank
   note My Bank account
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (directive
       (account_directive
         (account)
-        (account_subdirective (note_subdirective))
-        ))))
+        (account_subdirective
+          (note_subdirective))))))
 
-
-===
+================================================================================
 commodity with format
-===
+================================================================================
 
 commodity CHF
   format 1,000.00 CHF
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
@@ -418,31 +429,31 @@ commodity CHF
       (commodity_directive
         (commodity)
         (commodity_subdirective
-          (format_subdirective (amount (quantity) (commodity))))
-        ))))
+          (format_subdirective
+            (amount
+              (quantity)
+              (commodity))))))))
 
-
-===
+================================================================================
 alias declaration
-===
+================================================================================
 
 alias NewName=Assets:Bank Account
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (directive
       (word_directive))))
 
-
-===
+================================================================================
 multiple comments
-===
+================================================================================
 ; something
 * something
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
@@ -450,16 +461,15 @@ multiple comments
   (journal_item
     (comment)))
 
-
-===
+================================================================================
 blank lines
-===
+================================================================================
 
 ; comment
 
 * comment
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
@@ -467,10 +477,9 @@ blank lines
   (journal_item
     (comment)))
 
-
-===
+================================================================================
 multiple xacts
-===
+================================================================================
 
 2020-12-02 * Some market
     Expenses:Food:Groceries                1 EUR
@@ -480,13 +489,14 @@ multiple xacts
     Expenses:Food                        20.00 u
     Assets:Cash
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (status)
         (payee)
         (posting
@@ -499,7 +509,8 @@ multiple xacts
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (status)
         (payee)
         (posting
@@ -510,16 +521,15 @@ multiple xacts
         (posting
           (account))))))
 
-
-===
+================================================================================
 multiple directives
-===
+================================================================================
 
 include foo.journal
 include bar.ledger
 alias NewName=Assets:Bank Account
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
@@ -532,70 +542,77 @@ alias NewName=Assets:Bank Account
     (directive
       (word_directive))))
 
-===
+================================================================================
 notes
-===
+================================================================================
 2020-12-01 Something
     ; some note
     Expenses:Food:Groceries                21.36 EUR ; asdfsadf
     ; another note
     Assets:Bank:Checking
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
+        (date
+          (single_date))
         (payee)
         (note)
         (posting
           (account)
-          (amount (quantity) (commodity))
+          (amount
+            (quantity)
+            (commodity))
           (note))
         (note)
-        (posting (account))))))
+        (posting
+          (account))))))
 
-===
+================================================================================
 time directives
-===
+================================================================================
 
 i 2013/03/28 22:13:00 Some:Account
 o 2013/03/29 03:39:00
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (directive
       (char_directive
         (check_in
-          (date (single_date))
+          (date
+            (single_date))
           (time)
           (account)))))
   (journal_item
     (directive
       (char_directive
         (check_out
-          (date (single_date))
+          (date
+            (single_date))
           (time))))))
 
-===
+================================================================================
 time directives with payee
-===
+================================================================================
 
 I 2013/03/28 22:13:00 Some:Account  A Payee
 O 2013/03/29 03:39:00
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (directive
       (char_directive
         (check_in
-          (date (single_date))
+          (date
+            (single_date))
           (time)
           (account)
           (payee)))))
@@ -603,91 +620,115 @@ O 2013/03/29 03:39:00
     (directive
       (char_directive
         (check_out
-          (date (single_date))
+          (date
+            (single_date))
           (time))))))
 
-===
+================================================================================
 year directives
-===
+================================================================================
 
 Y 2021
 year 2021
 
----
+--------------------------------------------------------------------------------
 
 (source_file
- (journal_item (directive (char_directive)))
- (journal_item (directive (word_directive))))
+  (journal_item
+    (directive
+      (char_directive)))
+  (journal_item
+    (directive
+      (word_directive))))
 
-===
+================================================================================
 bucket directives
-===
+================================================================================
 
 A Some:Account
 bucket Some:Account
 
----
+--------------------------------------------------------------------------------
 
 (source_file
-  (journal_item (directive (char_directive (account))))
-  (journal_item (directive (word_directive (account)))))
+  (journal_item
+    (directive
+      (char_directive
+        (account))))
+  (journal_item
+    (directive
+      (word_directive
+        (account)))))
 
-===
+================================================================================
 ignore pricing directive
-===
+================================================================================
 
 N EUR
 
----
+--------------------------------------------------------------------------------
 
 (source_file
-  (journal_item (directive (char_directive (commodity)))))
+  (journal_item
+    (directive
+      (char_directive
+        (commodity)))))
 
-===
+================================================================================
 default commodity directive
-===
+================================================================================
 
 D 1.000 EUR
 
----
+--------------------------------------------------------------------------------
 
 (source_file
-  (journal_item (directive (char_directive (amount (quantity) (commodity))))))
+  (journal_item
+    (directive
+      (char_directive
+        (amount
+          (quantity)
+          (commodity))))))
 
-===
+================================================================================
 commodity conversion directive
-===
+================================================================================
 
 C EUR = 1.20 USD
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (directive
       (char_directive
         (commodity)
-        (amount (quantity) (commodity))))))
+        (amount
+          (quantity)
+          (commodity))))))
 
-===
+================================================================================
 pricing directive
-===
+================================================================================
 
 P 2021-02-03 EUR 1.20 USD
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (directive
       (char_directive
-        (date (single_date))
+        (date
+          (single_date))
         (commodity)
-        (amount (quantity) (commodity))))))
+        (amount
+          (quantity)
+          (commodity))))))
 
-===
+================================================================================
 multiword commodity
-===
+================================================================================
 
 D 1.000 "Foo's Bar"
 C "Foo" = 1.20 "Foo Bar"
@@ -695,119 +736,184 @@ C "Foo" = 1.20 "Foo Bar"
 2020-12-02
     Expenses:Food:Groceries  2 "Hey there"
 
----
+--------------------------------------------------------------------------------
 
 (source_file
-  (journal_item (directive (char_directive (amount (quantity) (commodity)))))
-  (journal_item (directive (char_directive (commodity) (amount (quantity) (commodity)))))
-  (journal_item (xact
+  (journal_item
+    (directive
+      (char_directive
+        (amount
+          (quantity)
+          (commodity)))))
+  (journal_item
+    (directive
+      (char_directive
+        (commodity)
+        (amount
+          (quantity)
+          (commodity)))))
+  (journal_item
+    (xact
       (plain_xact
-        (date (single_date))
-        (posting (account) (amount (quantity) (commodity)))))))
+        (date
+          (single_date))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))))))
 
-===
+================================================================================
 various quantity formats
-===
+================================================================================
 
 2020-12-02
     Assets:Bank  1 000,00 PLN
     Assets:Bank  1,000.00 CHF
 
----
+--------------------------------------------------------------------------------
 
 (source_file
-  (journal_item (xact
+  (journal_item
+    (xact
       (plain_xact
-        (date (single_date))
-        (posting (account) (amount (quantity) (commodity)))
-        (posting (account) (amount (quantity) (commodity)))
-        ))))
+        (date
+          (single_date))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))))))
 
-===
+================================================================================
 UTF-8 commodity names
-===
+================================================================================
 
 2020-12-02
     Expenses:Food:Groceries  2 "Hoi Zäme"
     Expenses:Food:Groceries  2 Zäme
 
----
+--------------------------------------------------------------------------------
 
 (source_file
-  (journal_item (xact
+  (journal_item
+    (xact
       (plain_xact
-        (date (single_date))
-        (posting (account) (amount (quantity) (commodity)))
-        (posting (account) (amount (quantity) (commodity)))))))
+        (date
+          (single_date))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))))))
 
-===
+================================================================================
 UTF-8 account name
-===
+================================================================================
 
 2020-12-02
     Dépenses:Grosse Dépense
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
-        (posting (account))))))
+        (date
+          (single_date))
+        (posting
+          (account))))))
 
-===
+================================================================================
 numeric account name
-===
+================================================================================
 
 2021-01-01
     State:2021:Tax
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
-        (posting (account))))))
+        (date
+          (single_date))
+        (posting
+          (account))))))
 
-===
+================================================================================
 account name with symbols
-===
+================================================================================
 
 2021-01-01
     Bank:Account-Name&Oth€r$ymbols
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
-        (posting (account))))))
+        (date
+          (single_date))
+        (posting
+          (account))))))
 
-===
+================================================================================
 single letter account name
-===
+================================================================================
 
 2021-01-01
     A
 
----
+--------------------------------------------------------------------------------
 
 (source_file
   (journal_item
     (xact
       (plain_xact
-        (date (single_date))
-        (posting (account))))))
+        (date
+          (single_date))
+        (posting
+          (account))))))
 
-===
+================================================================================
 invalid directive, because it's indented
-===
+================================================================================
     A Account
----
+--------------------------------------------------------------------------------
 
-(source_file (ERROR (date (MISSING single_date)) (payee)))
+(source_file
+  (ERROR
+    (date
+      (MISSING single_date))
+    (payee)))
+
+================================================================================
+Periodic transactions
+================================================================================
+
+~ Monthly
+    State:2021:Tax
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (periodic_xact
+        (payee)
+        (posting
+          (account))))))
