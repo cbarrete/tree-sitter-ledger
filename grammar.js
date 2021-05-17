@@ -193,22 +193,13 @@ module.exports = grammar({
 
         xact: $ => choice(
             $.plain_xact,
-            // TODO $.periodic_xact,
+            $.periodic_xact,
             // TODO $.automated_xact,
         ),
 
-        plain_xact: $ => seq(
-            seq(
-                $.date,
-                optional(seq($.whitespace, $.status)),
-                optional(seq($.whitespace, $.payee)),
-                '\n'), // TODO code opt, note opt
-            repeat1(
-                choice(
-                    $.posting,
-                    seq($.whitespace, $.note, '\n'))),
-        ),
+        plain_xact: $ => xact_create($.date, $),
 
+        periodic_xact: $ => xact_create('~', $),
         // date, optionally with an effective date, e.g.:
         // 2020-01-01
         // 2020/01/01=2020.01-02
@@ -279,3 +270,18 @@ module.exports = grammar({
         spacer: $ => choice('  ', '\t', ' \t'),
     }
 })
+
+function xact_create(date, $) {
+ return seq(
+            seq(
+                date,
+                optional(seq($.whitespace, $.status)),
+                optional(seq($.whitespace, $.payee)),
+                '\n'), // TODO code opt, note opt
+            repeat1(
+                choice(
+                    $.posting,
+                    seq($.whitespace, $.note, '\n'))),
+        );
+
+}

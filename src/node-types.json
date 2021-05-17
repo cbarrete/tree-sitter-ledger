@@ -363,6 +363,33 @@
     "fields": {}
   },
   {
+    "type": "periodic_xact",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "payee",
+          "named": true
+        },
+        {
+          "type": "posting",
+          "named": true
+        },
+        {
+          "type": "status",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "plain_xact",
     "named": true,
     "fields": {},
@@ -491,6 +518,10 @@
       "multiple": false,
       "required": true,
       "types": [
+        {
+          "type": "periodic_xact",
+          "named": true
+        },
         {
           "type": "plain_xact",
           "named": true
@@ -664,6 +695,10 @@
   },
   {
     "type": "year",
+    "named": false
+  },
+  {
+    "type": "~",
     "named": false
   }
 ]
