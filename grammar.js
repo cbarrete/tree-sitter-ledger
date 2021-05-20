@@ -198,14 +198,14 @@ module.exports = grammar({
         ),
 
         // TODO code opt, note opt
-        plain_xact: $ => create_xact(
+        plain_xact: $ => createXact(
             seq($.date,
                 optional(seq($.whitespace, $.status)),
                 optional(seq($.whitespace, $.payee)),
                 '\n'),
             $),
 
-        periodic_xact: $ => create_xact(seq('~', $.whitespace, $.interval, '\n'), $),
+        periodic_xact: $ => createXact(seq('~', $.whitespace, $.interval, '\n'), $),
 
         interval: $ => choice(
             new RegExp(caseInsensitive('every day')),
@@ -293,7 +293,7 @@ module.exports = grammar({
     }
 })
 
-function create_xact(first_line, $) {
+function createXact(first_line, $) {
     return seq(
         first_line,
         repeat1(
