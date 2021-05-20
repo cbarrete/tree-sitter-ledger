@@ -272,16 +272,15 @@ module.exports = grammar({
 })
 
 function xact_create(date, $) {
- return seq(
-            seq(
-                date,
-                optional(seq($.whitespace, $.status)),
-                optional(seq($.whitespace, $.payee)),
-                '\n'), // TODO code opt, note opt
-            repeat1(
-                choice(
-                    $.posting,
-                    seq($.whitespace, $.note, '\n'))),
-        );
-
+    return seq(
+        seq(
+            date,
+            optional(seq($.whitespace, $.status)),
+            optional(seq($.whitespace, $.payee)),
+            '\n'), // TODO code opt, note opt
+        repeat1(
+            choice(
+                $.posting,
+                seq($.whitespace, $.note, '\n'))),
+    );
 }
