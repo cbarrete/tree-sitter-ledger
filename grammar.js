@@ -197,9 +197,31 @@ module.exports = grammar({
             // TODO $.automated_xact,
         ),
 
-        plain_xact: $ => xact_create($.date, $),
+        // TODO code opt, note opt
+        plain_xact: $ => create_xact(
+            seq($.date,
+                optional(seq($.whitespace, $.status)),
+                optional(seq($.whitespace, $.payee)),
+                '\n'),
+            $),
 
-        periodic_xact: $ => xact_create('~', $),
+        periodic_xact: $ => create_xact(seq('~', $.whitespace, $.interval, '\n'), $),
+
+        interval: $ => choice(
+            new RegExp(caseInsensitive('every day')),
+            new RegExp(caseInsensitive('every week')),
+            new RegExp(caseInsensitive('every month')),
+            new RegExp(caseInsensitive('every quarter')),
+            new RegExp(caseInsensitive('every year')),
+            new RegExp(caseInsensitive('daily')),
+            new RegExp(caseInsensitive('weekly')),
+            new RegExp(caseInsensitive('biweekly')),
+            new RegExp(caseInsensitive('monthly')),
+            new RegExp(caseInsensitive('bimonthly')),
+            new RegExp(caseInsensitive('quarterly')),
+            new RegExp(caseInsensitive('yearly')),
+        ),
+
         // date, optionally with an effective date, e.g.:
         // 2020-01-01
         // 2020/01/01=2020.01-02
@@ -271,16 +293,19 @@ module.exports = grammar({
     }
 })
 
-function xact_create(date, $) {
+function create_xact(first_line, $) {
     return seq(
-        seq(
-            date,
-            optional(seq($.whitespace, $.status)),
-            optional(seq($.whitespace, $.payee)),
-            '\n'), // TODO code opt, note opt
+        first_line,
         repeat1(
             choice(
                 $.posting,
                 seq($.whitespace, $.note, '\n'))),
     );
+}
+
+function caseInsensitive(input) {
+    return input
+        .split('')
+        .map(letter => `[${letter}${letter.toUpperCase()}]`)
+        .join('')
 }

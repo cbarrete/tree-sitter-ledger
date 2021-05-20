@@ -320,6 +320,11 @@
     }
   },
   {
+    "type": "interval",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "journal_item",
     "named": true,
     "fields": {},
@@ -371,19 +376,15 @@
       "required": true,
       "types": [
         {
+          "type": "interval",
+          "named": true
+        },
+        {
           "type": "note",
           "named": true
         },
         {
-          "type": "payee",
-          "named": true
-        },
-        {
           "type": "posting",
-          "named": true
-        },
-        {
-          "type": "status",
           "named": true
         }
       ]
