@@ -207,20 +207,29 @@ module.exports = grammar({
 
         periodic_xact: $ => createXact(seq('~', $.whitespace, $.interval, '\n'), $),
 
-        interval: $ => choice(
-            new RegExp(caseInsensitive('every day')),
-            new RegExp(caseInsensitive('every week')),
-            new RegExp(caseInsensitive('every month')),
-            new RegExp(caseInsensitive('every quarter')),
-            new RegExp(caseInsensitive('every year')),
-            new RegExp(caseInsensitive('daily')),
-            new RegExp(caseInsensitive('weekly')),
-            new RegExp(caseInsensitive('biweekly')),
-            new RegExp(caseInsensitive('monthly')),
-            new RegExp(caseInsensitive('bimonthly')),
-            new RegExp(caseInsensitive('quarterly')),
-            new RegExp(caseInsensitive('yearly')),
-        ),
+        interval: $ => {
+            ci = s => new RegExp(caseInsensitive(s))
+            ciNum = s => new RegExp(caseInsensitive('every') + ' \\d+ ' + caseInsensitive(s))
+            return choice(
+                ci('every day'),
+                ci('every week'),
+                ci('every month'),
+                ci('every quarter'),
+                ci('every year'),
+                ciNum('days'),
+                ciNum('weeks'),
+                ciNum('months'),
+                ciNum('quarters'),
+                ciNum('years'),
+                ci('daily'),
+                ci('weekly'),
+                ci('biweekly'),
+                ci('monthly'),
+                ci('bimonthly'),
+                ci('quarterly'),
+                ci('yearly'),
+            )
+        },
 
         // date, optionally with an effective date, e.g.:
         // 2020-01-01

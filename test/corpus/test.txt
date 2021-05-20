@@ -936,6 +936,27 @@ case insensitive interval
           (account))))))
 
 ================================================================================
+periodic transactions with integer interval
+================================================================================
+
+~ eVerY 20 wEeKs
+    Expenses:Groceries:Chocolate  2000 EUR ; don't ask questions
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (periodic_xact
+        (interval)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity))
+          (note))))))
+
+================================================================================
 periodic transactions require interval
 ================================================================================
 

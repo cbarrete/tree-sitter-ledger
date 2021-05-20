@@ -1027,6 +1027,26 @@
         },
         {
           "type": "PATTERN",
+          "value": "[eE][vV][eE][rR][yY] \\d+ [dD][aA][yY][sS]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[eE][vV][eE][rR][yY] \\d+ [wW][eE][eE][kK][sS]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[eE][vV][eE][rR][yY] \\d+ [mM][oO][nN][tT][hH][sS]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[eE][vV][eE][rR][yY] \\d+ [qQ][uU][aA][rR][tT][eE][rR][sS]"
+        },
+        {
+          "type": "PATTERN",
+          "value": "[eE][vV][eE][rR][yY] \\d+ [yY][eE][aA][rR][sS]"
+        },
+        {
+          "type": "PATTERN",
           "value": "[dD][aA][iI][lL][yY]"
         },
         {
