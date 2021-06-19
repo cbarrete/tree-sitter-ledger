@@ -10,7 +10,7 @@
 ] @number
 
 ((account) @field)
-((commodity) text.literal)
+((commodity) @text.literal)
 
 "include" @include
 
