@@ -247,8 +247,8 @@
               "name": "whitespace"
             },
             {
-              "type": "PATTERN",
-              "value": ".+"
+              "type": "SYMBOL",
+              "name": "filename"
             }
           ]
         },
@@ -333,6 +333,10 @@
           ]
         }
       ]
+    },
+    "filename": {
+      "type": "PATTERN",
+      "value": ".+"
     },
     "char_directive": {
       "type": "CHOICE",

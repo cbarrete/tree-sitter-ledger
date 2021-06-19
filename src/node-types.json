@@ -305,6 +305,11 @@
     "fields": {}
   },
   {
+    "type": "filename",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "format_subdirective",
     "named": true,
     "fields": {},
@@ -506,6 +511,10 @@
       "types": [
         {
           "type": "account",
+          "named": true
+        },
+        {
+          "type": "filename",
           "named": true
         }
       ]

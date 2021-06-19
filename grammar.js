@@ -62,7 +62,7 @@ module.exports = grammar({
             seq(
                 'include',
                 $.whitespace,
-                /.+/,
+                $.filename,
             ),
             'end',
             seq('alias', $.whitespace, /[^=]+/, '=', /.+/),
@@ -82,6 +82,8 @@ module.exports = grammar({
                 $.account,
             ),
         ),
+
+        filename: $ => /.+/,
 
         char_directive: $ => choice(
             // timeclock.el

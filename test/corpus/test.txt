@@ -381,7 +381,8 @@ include other.journal
 (source_file
   (journal_item
     (directive
-      (word_directive))))
+      (word_directive
+        (filename)))))
 
 ================================================================================
 account declaration
@@ -534,10 +535,12 @@ alias NewName=Assets:Bank Account
 (source_file
   (journal_item
     (directive
-      (word_directive)))
+      (word_directive
+        (filename))))
   (journal_item
     (directive
-      (word_directive)))
+      (word_directive
+        (filename))))
   (journal_item
     (directive
       (word_directive))))
