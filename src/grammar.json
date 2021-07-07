@@ -81,6 +81,10 @@
           "name": "commodity_directive"
         },
         {
+          "type": "SYMBOL",
+          "name": "tag_directive"
+        },
+        {
           "type": "SEQ",
           "members": [
             {
@@ -157,46 +161,12 @@
           "name": "note_subdirective"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "whitespace"
-            },
-            {
-              "type": "STRING",
-              "value": "assert"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "whitespace"
-            },
-            {
-              "type": "PATTERN",
-              "value": ".+\\n"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "assert_subdirective"
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "SYMBOL",
-              "name": "whitespace"
-            },
-            {
-              "type": "STRING",
-              "value": "check"
-            },
-            {
-              "type": "SYMBOL",
-              "name": "whitespace"
-            },
-            {
-              "type": "PATTERN",
-              "value": ".+\\n"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "check_subdirective"
         },
         {
           "type": "SEQ",
@@ -310,6 +280,44 @@
               "value": "\n"
             }
           ]
+        }
+      ]
+    },
+    "tag_directive": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "tag"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "PATTERN",
+              "value": "\\p{L}+\\n"
+            }
+          ]
+        },
+        {
+          "type": "REPEAT",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "assert_subdirective"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "check_subdirective"
+              }
+            ]
+          }
         }
       ]
     },
@@ -669,6 +677,48 @@
         {
           "type": "STRING",
           "value": "note"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "whitespace"
+        },
+        {
+          "type": "PATTERN",
+          "value": ".+\\n"
+        }
+      ]
+    },
+    "assert_subdirective": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "whitespace"
+        },
+        {
+          "type": "STRING",
+          "value": "assert"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "whitespace"
+        },
+        {
+          "type": "PATTERN",
+          "value": ".+\\n"
+        }
+      ]
+    },
+    "check_subdirective": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "whitespace"
+        },
+        {
+          "type": "STRING",
+          "value": "check"
         },
         {
           "type": "SYMBOL",

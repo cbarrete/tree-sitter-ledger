@@ -36,6 +36,14 @@
           "named": true
         },
         {
+          "type": "assert_subdirective",
+          "named": true
+        },
+        {
+          "type": "check_subdirective",
+          "named": true
+        },
+        {
           "type": "default_subdirective",
           "named": true
         },
@@ -69,6 +77,11 @@
         }
       ]
     }
+  },
+  {
+    "type": "assert_subdirective",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "balance_assertion",
@@ -167,6 +180,11 @@
     }
   },
   {
+    "type": "check_subdirective",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "comment",
     "named": true,
     "fields": {}
@@ -260,6 +278,10 @@
         },
         {
           "type": "commodity_directive",
+          "named": true
+        },
+        {
+          "type": "tag_directive",
           "named": true
         },
         {
@@ -457,6 +479,25 @@
     "fields": {}
   },
   {
+    "type": "tag_directive",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "assert_subdirective",
+          "named": true
+        },
+        {
+          "type": "check_subdirective",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "word_directive",
     "named": true,
     "fields": {},
@@ -644,15 +685,19 @@
   },
   {
     "type": "payee",
-    "named": true
+    "named": false
   },
   {
     "type": "payee",
-    "named": false
+    "named": true
   },
   {
     "type": "single_date",
     "named": true
+  },
+  {
+    "type": "tag",
+    "named": false
   },
   {
     "type": "time",

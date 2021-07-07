@@ -26,6 +26,7 @@ module.exports = grammar({
         directive: $ => choice(
             $.account_directive,
             $.commodity_directive,
+            $.tag_directive,
             seq($.word_directive, '\n'),
             seq($.char_directive, '\n'),
         ),
@@ -39,8 +40,8 @@ module.exports = grammar({
             $.alias_subdirective,
             $.default_subdirective,
             $.note_subdirective,
-            argumentDirective($, 'assert'),
-            argumentDirective($, 'check'),
+            $.assert_subdirective,
+            $.check_subdirective,
             argumentDirective($, 'eval'),
             argumentDirective($, 'payee'),
         ),
@@ -56,6 +57,14 @@ module.exports = grammar({
             $.format_subdirective,
             $.note_subdirective,
             singleKeywordDirective($, 'nomarket'),
+        ),
+
+        tag_directive: $ => seq(
+            seq('tag', $.whitespace, /\p{L}+\n/),
+            repeat(choice(
+                $.assert_subdirective,
+                $.check_subdirective,
+            )),
         ),
 
         word_directive: $ => choice(
@@ -124,6 +133,11 @@ module.exports = grammar({
         ),
 
         note_subdirective: $ => argumentDirective($, 'note'),
+
+        assert_subdirective: $ => argumentDirective($, 'assert'),
+
+        // TODO actually should be have a boolean expression in there
+        check_subdirective: $ => argumentDirective($, 'check'),
 
         check_in: $ => seq(choice('i', 'I'),
             optional($.whitespace),
