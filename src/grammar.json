@@ -1135,7 +1135,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "single_date"
+          "name": "_single_date"
         },
         {
           "type": "CHOICE",
@@ -1149,7 +1149,7 @@
                 },
                 {
                   "type": "SYMBOL",
-                  "name": "single_date"
+                  "name": "_single_date"
                 }
               ]
             },
@@ -1160,7 +1160,7 @@
         }
       ]
     },
-    "single_date": {
+    "_single_date": {
       "type": "PATTERN",
       "value": "\\d{4}[-\\.\\/]\\d{2}[-\\.\\/]\\d{2}"
     },

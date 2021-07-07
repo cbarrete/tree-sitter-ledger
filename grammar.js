@@ -203,9 +203,9 @@ module.exports = grammar({
         // date, optionally with an effective date, e.g.:
         // 2020-01-01
         // 2020/01/01=2020.01-02
-        date: $ => seq($.single_date, optional(seq('=', $.single_date))),
+        date: $ => seq($._single_date, optional(seq('=', $._single_date))),
 
-        single_date: $ => /\d{4}[-\.\/]\d{2}[-\.\/]\d{2}/,
+        _single_date: $ => /\d{4}[-\.\/]\d{2}[-\.\/]\d{2}/,
 
         time: $ => /\d{2}:\d{2}:\d{2}/,
 

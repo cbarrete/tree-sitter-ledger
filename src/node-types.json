@@ -248,17 +248,7 @@
   {
     "type": "date",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "single_date",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "default_subdirective",
@@ -707,10 +697,6 @@
   {
     "type": "payee",
     "named": false
-  },
-  {
-    "type": "single_date",
-    "named": true
   },
   {
     "type": "tag",

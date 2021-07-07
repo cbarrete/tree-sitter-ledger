@@ -18,8 +18,7 @@ without payee
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account))))))
 
@@ -35,8 +34,7 @@ with payee
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (payee)
         (posting
           (account))))))
@@ -53,8 +51,7 @@ with full payee
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (payee)
         (posting
           (account))))))
@@ -71,8 +68,7 @@ with cleared status
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (status)
         (posting
           (account))))))
@@ -89,8 +85,7 @@ with pending status
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (status)
         (payee)
         (posting
@@ -112,8 +107,7 @@ With code
     (journal_item
       (xact
         (plain_xact
-          (date
-            (single_date))
+          (date)
           (code)
           (payee)
           (posting
@@ -121,8 +115,7 @@ With code
     (journal_item
       (xact
         (plain_xact
-          (date
-            (single_date))
+          (date)
           (status)
           (code)
           (payee)
@@ -141,8 +134,7 @@ with amount
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)
           (amount
@@ -161,8 +153,7 @@ with amount that has commodity first
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)
           (amount
@@ -181,8 +172,7 @@ with amount that has non letter commodity
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)
           (amount
@@ -201,8 +191,7 @@ with amount that has non letter commodity first
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)
           (amount
@@ -253,29 +242,25 @@ date formats
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)))))
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)))))
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)))))
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account))))))
 
@@ -292,9 +277,7 @@ effective date
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date)
-          (single_date))
+        (date)
         (posting
           (account))))))
 
@@ -314,8 +297,7 @@ virtual postings
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)
           (amount
@@ -348,8 +330,7 @@ postings with status
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (status)
           (account)
@@ -378,9 +359,7 @@ with price
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date)
-          (single_date))
+        (date)
         (payee)
         (posting
           (account)
@@ -417,8 +396,7 @@ with price and balance assertion
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)
           (amount
@@ -604,8 +582,7 @@ multiple xacts
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (status)
         (payee)
         (posting
@@ -618,8 +595,7 @@ multiple xacts
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (status)
         (payee)
         (posting
@@ -668,8 +644,7 @@ notes
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (payee)
         (note)
         (posting
@@ -696,16 +671,14 @@ o 2013/03/29 03:39:00
     (directive
       (char_directive
         (check_in
-          (date
-            (single_date))
+          (date)
           (time)
           (account)))))
   (journal_item
     (directive
       (char_directive
         (check_out
-          (date
-            (single_date))
+          (date)
           (time))))))
 
 ================================================================================
@@ -722,8 +695,7 @@ O 2013/03/29 03:39:00
     (directive
       (char_directive
         (check_in
-          (date
-            (single_date))
+          (date)
           (time)
           (account)
           (payee)))))
@@ -731,8 +703,7 @@ O 2013/03/29 03:39:00
     (directive
       (char_directive
         (check_out
-          (date
-            (single_date))
+          (date)
           (time))))))
 
 ================================================================================
@@ -830,8 +801,7 @@ P 2021-02-03 EUR 1.20 USD
   (journal_item
     (directive
       (char_directive
-        (date
-          (single_date))
+        (date)
         (commodity)
         (amount
           (quantity)
@@ -866,8 +836,7 @@ C "Foo" = 1.20 "Foo Bar"
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)
           (amount
@@ -888,8 +857,7 @@ various quantity formats
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)
           (amount
@@ -915,8 +883,7 @@ UTF-8 commodity names
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account)
           (amount
@@ -941,8 +908,7 @@ UTF-8 account name
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account))))))
 
@@ -959,8 +925,7 @@ numeric account name
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account))))))
 
@@ -977,8 +942,7 @@ account name with symbols
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account))))))
 
@@ -995,8 +959,7 @@ single letter account name
   (journal_item
     (xact
       (plain_xact
-        (date
-          (single_date))
+        (date)
         (posting
           (account))))))
 
@@ -1009,7 +972,7 @@ invalid directive, because it's indented
 (source_file
   (ERROR
     (date
-      (MISSING single_date))
+      (MISSING _single_date))
     (payee)))
 
 ================================================================================
@@ -1080,5 +1043,5 @@ periodic transactions require interval
   (ERROR)
   (ERROR
     (date
-      (MISSING single_date))
+      (MISSING _single_date))
     (payee)))
