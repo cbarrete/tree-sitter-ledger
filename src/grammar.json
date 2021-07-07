@@ -150,27 +150,95 @@
         },
         {
           "type": "SYMBOL",
-          "name": "assert_subdirective"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "check_subdirective"
-        },
-        {
-          "type": "SYMBOL",
           "name": "default_subdirective"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "eval_subdirective"
         },
         {
           "type": "SYMBOL",
           "name": "note_subdirective"
         },
         {
-          "type": "SYMBOL",
-          "name": "payee_subdirective"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "STRING",
+              "value": "assert"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "PATTERN",
+              "value": ".+\\n"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "STRING",
+              "value": "check"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "PATTERN",
+              "value": ".+\\n"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "STRING",
+              "value": "eval"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "PATTERN",
+              "value": ".+\\n"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "STRING",
+              "value": "payee"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "PATTERN",
+              "value": ".+\\n"
+            }
+          ]
         }
       ]
     },
@@ -227,8 +295,21 @@
           "name": "note_subdirective"
         },
         {
-          "type": "SYMBOL",
-          "name": "nomarket_subdirective"
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "STRING",
+              "value": "nomarket"
+            },
+            {
+              "type": "STRING",
+              "value": "\n"
+            }
+          ]
         }
       ]
     },
@@ -540,48 +621,6 @@
         }
       ]
     },
-    "assert_subdirective": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "whitespace"
-        },
-        {
-          "type": "STRING",
-          "value": "assert"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "whitespace"
-        },
-        {
-          "type": "PATTERN",
-          "value": ".+\\n"
-        }
-      ]
-    },
-    "check_subdirective": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "whitespace"
-        },
-        {
-          "type": "STRING",
-          "value": "check"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "whitespace"
-        },
-        {
-          "type": "PATTERN",
-          "value": ".+\\n"
-        }
-      ]
-    },
     "default_subdirective": {
       "type": "SEQ",
       "members": [
@@ -594,29 +633,8 @@
           "value": "default"
         },
         {
-          "type": "PATTERN",
-          "value": "\\n"
-        }
-      ]
-    },
-    "eval_subdirective": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "whitespace"
-        },
-        {
           "type": "STRING",
-          "value": "eval"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "whitespace"
-        },
-        {
-          "type": "PATTERN",
-          "value": ".+\\n"
+          "value": "\n"
         }
       ]
     },
@@ -641,23 +659,6 @@
         }
       ]
     },
-    "nomarket_subdirective": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "whitespace"
-        },
-        {
-          "type": "STRING",
-          "value": "nomarket"
-        },
-        {
-          "type": "PATTERN",
-          "value": "\\n"
-        }
-      ]
-    },
     "note_subdirective": {
       "type": "SEQ",
       "members": [
@@ -668,27 +669,6 @@
         {
           "type": "STRING",
           "value": "note"
-        },
-        {
-          "type": "SYMBOL",
-          "name": "whitespace"
-        },
-        {
-          "type": "PATTERN",
-          "value": ".+\\n"
-        }
-      ]
-    },
-    "payee_subdirective": {
-      "type": "SEQ",
-      "members": [
-        {
-          "type": "SYMBOL",
-          "name": "whitespace"
-        },
-        {
-          "type": "STRING",
-          "value": "payee"
         },
         {
           "type": "SYMBOL",

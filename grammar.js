@@ -37,12 +37,12 @@ module.exports = grammar({
 
         account_subdirective: $ => choice(
             $.alias_subdirective,
-            $.assert_subdirective,
-            $.check_subdirective,
             $.default_subdirective,
-            $.eval_subdirective,
             $.note_subdirective,
-            $.payee_subdirective,
+            argumentDirective($, 'assert'),
+            argumentDirective($, 'check'),
+            argumentDirective($, 'eval'),
+            argumentDirective($, 'payee'),
         ),
 
         commodity_directive: $ => seq(
@@ -55,7 +55,7 @@ module.exports = grammar({
             $.default_subdirective,
             $.format_subdirective,
             $.note_subdirective,
-            $.nomarket_subdirective,
+            singleKeywordDirective($, 'nomarket'),
         ),
 
         word_directive: $ => choice(
@@ -112,39 +112,9 @@ module.exports = grammar({
             )
         ),
 
-        alias_subdirective: $ => seq(
-            $.whitespace,
-            'alias',
-            $.whitespace,
-            /.+\n/,
-        ),
+        alias_subdirective: $ => argumentDirective($, 'alias'),
 
-        assert_subdirective: $ => seq(
-            $.whitespace,
-            'assert',
-            $.whitespace,
-            /.+\n/,
-        ),
-
-        check_subdirective: $ => seq(
-            $.whitespace,
-            'check',
-            $.whitespace,
-            /.+\n/,
-        ),
-
-        default_subdirective: $ => seq(
-            $.whitespace,
-            'default',
-            /\n/,
-        ),
-
-        eval_subdirective: $ => seq(
-            $.whitespace,
-            'eval',
-            $.whitespace,
-            /.+\n/,
-        ),
+        default_subdirective: $ => singleKeywordDirective($, 'default'),
 
         format_subdirective: $ => seq(
             $.whitespace,
@@ -153,25 +123,7 @@ module.exports = grammar({
             $.amount,
         ),
 
-        nomarket_subdirective: $ => seq(
-            $.whitespace,
-            'nomarket',
-            /\n/,
-        ),
-
-        note_subdirective: $ => seq(
-            $.whitespace,
-            'note',
-            $.whitespace,
-            /.+\n/,
-        ),
-
-        payee_subdirective: $ => seq(
-            $.whitespace,
-            'payee',
-            $.whitespace,
-            /.+\n/,
-        ),
+        note_subdirective: $ => argumentDirective($, 'note'),
 
         check_in: $ => seq(choice('i', 'I'),
             optional($.whitespace),
@@ -319,4 +271,21 @@ function caseInsensitive(input) {
         .split('')
         .map(letter => `[${letter}${letter.toUpperCase()}]`)
         .join('')
+}
+
+function argumentDirective($, argument) {
+    return seq(
+            $.whitespace,
+            argument,
+            $.whitespace,
+            /.+\n/,
+    )
+}
+
+function singleKeywordDirective($, keyword) {
+    return seq(
+            $.whitespace,
+            keyword,
+            '\n',
+    )
 }

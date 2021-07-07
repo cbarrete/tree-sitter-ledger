@@ -29,18 +29,10 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "alias_subdirective",
-          "named": true
-        },
-        {
-          "type": "assert_subdirective",
-          "named": true
-        },
-        {
-          "type": "check_subdirective",
           "named": true
         },
         {
@@ -48,15 +40,7 @@
           "named": true
         },
         {
-          "type": "eval_subdirective",
-          "named": true
-        },
-        {
           "type": "note_subdirective",
-          "named": true
-        },
-        {
-          "type": "payee_subdirective",
           "named": true
         }
       ]
@@ -85,11 +69,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "assert_subdirective",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "balance_assertion",
@@ -188,11 +167,6 @@
     }
   },
   {
-    "type": "check_subdirective",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "comment",
     "named": true,
     "fields": {}
@@ -227,7 +201,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "alias_subdirective",
@@ -239,10 +213,6 @@
         },
         {
           "type": "format_subdirective",
-          "named": true
-        },
-        {
-          "type": "nomarket_subdirective",
           "named": true
         },
         {
@@ -300,11 +270,6 @@
     }
   },
   {
-    "type": "eval_subdirective",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "filename",
     "named": true,
     "fields": {}
@@ -353,22 +318,12 @@
     }
   },
   {
-    "type": "nomarket_subdirective",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "note",
     "named": true,
     "fields": {}
   },
   {
     "type": "note_subdirective",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "payee_subdirective",
     "named": true,
     "fields": {}
   },
@@ -689,11 +644,11 @@
   },
   {
     "type": "payee",
-    "named": false
+    "named": true
   },
   {
     "type": "payee",
-    "named": true
+    "named": false
   },
   {
     "type": "single_date",
