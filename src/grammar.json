@@ -935,6 +935,27 @@
                     },
                     {
                       "type": "SYMBOL",
+                      "name": "code"
+                    }
+                  ]
+                },
+                {
+                  "type": "BLANK"
+                }
+              ]
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SEQ",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "whitespace"
+                    },
+                    {
+                      "type": "SYMBOL",
                       "name": "payee"
                     }
                   ]
@@ -1160,9 +1181,26 @@
         }
       ]
     },
+    "code": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "("
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^)]*"
+        },
+        {
+          "type": "STRING",
+          "value": ")"
+        }
+      ]
+    },
     "payee": {
       "type": "PATTERN",
-      "value": "[^*!\\n]+"
+      "value": "[^(*!\\n][^*!\\n]*"
     },
     "note": {
       "type": "SEQ",

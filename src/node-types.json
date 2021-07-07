@@ -185,6 +185,11 @@
     "fields": {}
   },
   {
+    "type": "code",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "comment",
     "named": true,
     "fields": {}
@@ -381,6 +386,10 @@
       "required": true,
       "types": [
         {
+          "type": "code",
+          "named": true
+        },
+        {
           "type": "date",
           "named": true
         },
@@ -564,6 +573,14 @@
     "named": false
   },
   {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
     "type": "*",
     "named": false
   },
@@ -685,11 +702,11 @@
   },
   {
     "type": "payee",
-    "named": false
+    "named": true
   },
   {
     "type": "payee",
-    "named": true
+    "named": false
   },
   {
     "type": "single_date",

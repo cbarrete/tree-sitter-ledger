@@ -165,10 +165,11 @@ module.exports = grammar({
             // TODO $.automated_xact,
         ),
 
-        // TODO code opt, note opt
+        // TODO note opt
         plain_xact: $ => createXact($,
             seq($.date,
                 optional(seq($.whitespace, $.status)),
+                optional(seq($.whitespace, $.code)),
                 optional(seq($.whitespace, $.payee)),
                 '\n'),
             ),
@@ -210,7 +211,9 @@ module.exports = grammar({
 
         status: $ => choice('*', '!'),
 
-        payee: $ => /[^*!\n]+/,
+        code: $ => seq('(', /[^)]*/, ')'),
+
+        payee: $ => /[^(*!\n][^*!\n]*/,
 
         note: $ => seq(';', /.*/),
 
