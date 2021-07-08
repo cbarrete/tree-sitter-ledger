@@ -1,0 +1,330 @@
+================================================================================
+empty
+================================================================================
+
+--------------------------------------------------------------------------------
+
+(source_file)
+
+================================================================================
+without payee
+================================================================================
+2020-12-02
+    Expenses:Food:Groceries
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account))))))
+
+================================================================================
+with payee
+================================================================================
+2020-12-02 Market
+    Expenses:Food:Groceries
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (account))))))
+
+================================================================================
+with full payee
+================================================================================
+2020-12-02 Local Market
+    Expenses:Food:Groceries
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (account))))))
+
+================================================================================
+With code
+================================================================================
+
+2020-12-02 (#3001) Market
+    Expenses:Food:Groceries
+
+2020-12-02 * (XFER) Market
+    Expenses:Food:Groceries
+
+--------------------------------------------------------------------------------
+
+(source_file
+    (journal_item
+      (xact
+        (plain_xact
+          (date)
+          (code)
+          (payee)
+          (posting
+            (account)))))
+    (journal_item
+      (xact
+        (plain_xact
+          (date)
+          (status)
+          (code)
+          (payee)
+          (posting
+            (account))))))
+
+================================================================================
+date formats
+================================================================================
+
+2020-12-02
+    Expenses:Food:Groceries
+
+2020/12/02
+    Expenses:Food:Groceries
+
+2020.12.02
+    Expenses:Food:Groceries
+
+2020/12-02
+    Expenses:Food:Groceries
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account))))))
+
+================================================================================
+effective date
+================================================================================
+
+2020-12-02=2020-12-03
+    Expenses:Food:Groceries
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account))))))
+
+================================================================================
+virtual postings
+================================================================================
+
+2012-03-10
+    Expenses:Food                20.00 u
+    Assets:Cash
+    [Budget:Food]               -20.00 u
+    [Equity:Budgets]             20.00 u
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))))))
+
+================================================================================
+with price
+================================================================================
+
+2020-12-04=2020-12-05 Selling INTC
+    Assets:Broker                           -15 INTC @ 60 USD
+    Assets:Broker                            899 USD
+    Expenses:Broker:Fees                       1 USD
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity))
+          (price
+            (amount
+              (quantity)
+              (commodity))))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))))))
+
+================================================================================
+with price and balance assertion
+================================================================================
+
+2020-12-04
+    Assets:Broker                           -15 INTC @ 60 USD = 0 INTC
+    Assets:Broker                            900 USD
+    Assets:Empty Account                                      = 0 USD
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity))
+          (price
+            (amount
+              (quantity)
+              (commodity)))
+          (balance_assertion
+            (amount
+              (quantity)
+              (commodity))))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account)
+          (balance_assertion
+            (amount
+              (quantity)
+              (commodity))))))))
+
+================================================================================
+multiple xacts
+================================================================================
+
+2020-12-02 * Some market
+    Expenses:Food:Groceries                1 EUR
+    Assets:Bank:Checking
+
+2012-03-10 ! Something
+    Expenses:Food                        20.00 u
+    Assets:Cash
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (status)
+        (payee)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (status)
+        (payee)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account))))))
+
+================================================================================
+various quantity formats
+================================================================================
+
+2020-12-02
+    Assets:Bank  1 000,00 PLN
+    Assets:Bank  1,000.00 CHF
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))))))
