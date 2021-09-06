@@ -1,0 +1,31 @@
+================================================================================
+single dates
+================================================================================
+
+2021-09-01
+    Account
+
+21-09-01
+    Account
+
+09-01
+    Account
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting (account))))))

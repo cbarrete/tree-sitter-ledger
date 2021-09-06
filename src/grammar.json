@@ -1160,9 +1160,89 @@
         }
       ]
     },
-    "_single_date": {
+    "_dsep": {
       "type": "PATTERN",
-      "value": "\\d{4}[-\\.\\/]\\d{2}[-\\.\\/]\\d{2}"
+      "value": "[-\\.\\/]"
+    },
+    "_2d": {
+      "type": "PATTERN",
+      "value": "\\d{2}"
+    },
+    "_4d": {
+      "type": "PATTERN",
+      "value": "\\d{4}"
+    },
+    "_single_date": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_4d"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dsep"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dsep"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dsep"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dsep"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            }
+          ]
+        },
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_dsep"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "_2d"
+            }
+          ]
+        }
+      ]
     },
     "time": {
       "type": "PATTERN",

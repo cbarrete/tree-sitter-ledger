@@ -291,7 +291,4 @@ invalid directive, because it's indented
 
 (source_file
   (ERROR
-    (date
-      (MISSING _single_date))
-    (payee)))
-
+    (char_directive (account))))
