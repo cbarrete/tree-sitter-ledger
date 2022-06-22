@@ -165,16 +165,22 @@ module.exports = grammar({
             // TODO $.automated_xact,
         ),
 
-        // TODO note opt
         plain_xact: $ => createXact($,
             seq($.date,
                 optional(seq($.whitespace, $.status)),
                 optional(seq($.whitespace, $.code)),
                 optional(seq($.whitespace, $.payee)),
-                '\n'),
+                choice($.note, '\n')
             ),
+        ),
 
-        periodic_xact: $ => createXact($, seq('~', $.whitespace, $.interval, '\n')),
+        periodic_xact: $ => createXact($,
+            seq('~',
+                $.whitespace,
+                $.interval,
+                choice($.note, '\n')
+            ),
+        ),
 
         interval: $ => {
             ci = s => new RegExp(caseInsensitive(s))
@@ -222,7 +228,10 @@ module.exports = grammar({
 
         payee: $ => /[^(*!\n][^*!\n]*/,
 
-        note: $ => seq(';', /.*/),
+        note: $ => seq(';', repeat($.tag), /.*/),
+
+        // TODO not sure why this is broken
+        tag: $ => seq(optional(':'), /[^\s:]+/, ':'),
 
         posting: $ => seq(
             $.whitespace,

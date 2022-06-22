@@ -966,8 +966,17 @@
               ]
             },
             {
-              "type": "STRING",
-              "value": "\n"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "note"
+                },
+                {
+                  "type": "STRING",
+                  "value": "\n"
+                }
+              ]
             }
           ]
         },
@@ -1021,8 +1030,17 @@
               "name": "interval"
             },
             {
-              "type": "STRING",
-              "value": "\n"
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "note"
+                },
+                {
+                  "type": "STRING",
+                  "value": "\n"
+                }
+              ]
             }
           ]
         },
@@ -1290,8 +1308,40 @@
           "value": ";"
         },
         {
+          "type": "REPEAT",
+          "content": {
+            "type": "SYMBOL",
+            "name": "tag"
+          }
+        },
+        {
           "type": "PATTERN",
           "value": ".*"
+        }
+      ]
+    },
+    "tag": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "STRING",
+              "value": ":"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "PATTERN",
+          "value": "[^\\s:]+"
+        },
+        {
+          "type": "STRING",
+          "value": ":"
         }
       ]
     },

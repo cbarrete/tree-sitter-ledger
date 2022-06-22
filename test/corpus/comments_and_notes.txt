@@ -23,7 +23,7 @@ with * comment
 ================================================================================
 notes
 ================================================================================
-2020-12-01 Something
+2020-12-01 Something  ; title note
     ; some note
     Expenses:Food:Groceries                21.36 EUR ; asdfsadf
     ; another note
@@ -77,3 +77,30 @@ blank lines
     (comment))
   (journal_item
     (comment)))
+
+================================================================================
+metadata tags
+================================================================================
+
+2012-03-10 * KFC
+    Expenses:Food                $20.00
+    Assets:Cash
+      ; :TAG1:TAG2:TAG3:
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (status)
+        (payee)
+        (posting
+          (account)
+          (amount
+            (commodity)
+            (quantity)))
+        (posting
+          (account))
+        (note)))))
