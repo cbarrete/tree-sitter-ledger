@@ -337,17 +337,7 @@
   {
     "type": "note",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": false,
-      "types": [
-        {
-          "type": "tag",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "note_subdirective",
@@ -488,11 +478,6 @@
     "fields": {}
   },
   {
-    "type": "tag",
-    "named": true,
-    "fields": {}
-  },
-  {
     "type": "tag_directive",
     "named": true,
     "fields": {},
@@ -591,10 +576,6 @@
   },
   {
     "type": "-",
-    "named": false
-  },
-  {
-    "type": ":",
     "named": false
   },
   {

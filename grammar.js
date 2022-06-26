@@ -228,10 +228,7 @@ module.exports = grammar({
 
         payee: $ => /[^(*!\n][^*!\n]*/,
 
-        note: $ => seq(';', repeat($.tag), /.*/),
-
-        // TODO not sure why this is broken
-        tag: $ => seq(optional(':'), /[^\s:]+/, ':'),
+        note: $ => seq(';', /.*/),
 
         posting: $ => seq(
             $.whitespace,
