@@ -23,7 +23,7 @@ with * comment
 ================================================================================
 notes
 ================================================================================
-2020-12-01 Something
+2020-12-01 Something  ; title note
     ; some note
     Expenses:Food:Groceries                21.36 EUR ; asdfsadf
     ; another note
@@ -77,3 +77,4 @@ blank lines
     (comment))
   (journal_item
     (comment)))
+

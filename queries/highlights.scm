@@ -11,6 +11,7 @@
 
 ((account) @field)
 ((commodity) @text.literal)
+((tag) @tag)
 
 "include" @include
 

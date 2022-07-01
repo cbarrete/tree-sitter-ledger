@@ -69,23 +69,23 @@ With code
 --------------------------------------------------------------------------------
 
 (source_file
-    (journal_item
-      (xact
-        (plain_xact
-          (date)
-          (code)
-          (payee)
-          (posting
-            (account)))))
-    (journal_item
-      (xact
-        (plain_xact
-          (date)
-          (status)
-          (code)
-          (payee)
-          (posting
-            (account))))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (code)
+        (payee)
+        (posting
+          (account)))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (status)
+        (code)
+        (payee)
+        (posting
+          (account))))))
 
 ================================================================================
 date formats
