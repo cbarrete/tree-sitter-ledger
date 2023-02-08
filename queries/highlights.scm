@@ -1,4 +1,7 @@
-((comment) @comment)
+[
+    (block_comment)
+    (comment)
+] @comment
 ((note) @comment.note)
 
 ((date) @number.date)
