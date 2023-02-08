@@ -1,16 +1,12 @@
-[
-    (comment)
-    (note)
-] @comment
+((comment) @comment)
+((note) @comment.note)
 
-[
-    (date)
-    (interval)
-    (quantity)
-] @number
+((date) @number.date)
+((interval) @number.interval)
+((quantity) @number.quantity)
 
-((account) @field)
-((commodity) @text.literal)
+((account) @field.account)
+((commodity) @text.literal.commodity)
 
 "include" @include
 
