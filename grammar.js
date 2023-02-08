@@ -269,17 +269,21 @@ module.exports = grammar({
 
         amount: $ => choice(
             seq(
-                $.quantity,
+                choice($.quantity, $.quantity_negative),
                 optional($.whitespace),
                 $.commodity),
             seq(
                 $.commodity,
                 optional($.whitespace),
-                $.quantity),
+                choice($.quantity, $.quantity_negative)),
         ),
 
         quantity: $ => seq(
-            optional('-'), /\d([\d., ]*\d)?/,
+            optional('+'), /\d([\d., ]*\d)?/,
+        ),
+
+        quantity_negative: $ => seq(
+            '-', /\d([\d., ]*\d)?/,
         ),
 
         commodity: $ => choice(/\p{L}+/, /\p{Sc}/, /"[^"\n]*"/),
