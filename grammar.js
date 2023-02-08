@@ -18,7 +18,8 @@ module.exports = grammar({
             $.xact,
         ),
 
-        comment: $ => seq(choice(';', '*'), /.*\n/),
+        // See https://www.ledger-cli.org/3.0/doc/ledger3.html#Commenting-on-your-Journal
+        comment: $ => token(seq(choice(';', '#', '%', '|', '*'), /.*\n/)),
 
         indented_line: $ => seq($.whitespace, /[^\n]+\n/),
 
