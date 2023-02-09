@@ -80,7 +80,7 @@ end comment
     (block_comment)))
 
 ================================================================================
-with block comment Starting at the beginning of the line
+with block comment starting at the beginning of the line
 ================================================================================
 comment
 This is a block comment with
@@ -106,6 +106,29 @@ end comment
 (source_file
   (journal_item
     (block_comment)))
+
+================================================================================
+test
+================================================================================
+test bal -E --flat --no-total
+                   0  Assets:A
+                   5  Assets:B
+                   5  Assets:C
+                 -10  Equity:Opening balances
+                   0  Liabilities:A
+end test
+
+test bal -n --flat
+end test
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (test))
+  (journal_item
+    (test)))
+
 
 ================================================================================
 notes

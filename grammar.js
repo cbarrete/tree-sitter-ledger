@@ -15,6 +15,7 @@ module.exports = grammar({
         journal_item: $ => choice(
             $.comment,
             $.block_comment,
+            $.test,
             $.directive,
             $.xact,
         ),
@@ -22,13 +23,9 @@ module.exports = grammar({
         // See https://www.ledger-cli.org/3.0/doc/ledger3.html#Commenting-on-your-Journal
         comment: $ => token(seq(choice(';', '#', '%', '|', '*'), /.*\n/)),
 
-        block_comment: $ => seq(
-          'comment',
-          optional(seq($.whitespace, /.*/)),
-          '\n',
-          repeat(seq(optional(seq(optional($.whitespace), /.*/)), '\n')),
-          'end comment',
-        ),
+        block_comment: $ => block($, 'comment'),
+
+        test: $ => block($, 'test'),
 
         indented_line: $ => seq($.whitespace, /[^\n]+\n/),
 
@@ -328,4 +325,18 @@ function singleKeywordDirective($, keyword) {
             keyword,
             '\n',
     )
+}
+
+function block($, keyword) {
+    return seq(
+            token(keyword),
+            optional(seq($.whitespace, /.*/)),
+            '\n',
+            repeat(seq(optional(seq(optional($.whitespace), /.*/)), '\n')),
+            choice(
+              token('end'),
+              token(`end ${keyword}`),
+              seq(token('end'), /.*/)
+            ),
+          )
 }
