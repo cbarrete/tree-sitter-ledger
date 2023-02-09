@@ -136,7 +136,7 @@ effective date
 ================================================================================
 
 2020-12-02=2020-12-03
-    Expenses:Food:Groceries
+    Expenses:Food:Groceries    ; [=2020-12-04]
 
 --------------------------------------------------------------------------------
 
@@ -145,8 +145,11 @@ effective date
     (xact
       (plain_xact
         (date)
+        (effective_date)
         (posting
-          (account))))))
+          (account)
+          (note
+            (effective_date)))))))
 
 ================================================================================
 virtual postings
@@ -199,6 +202,7 @@ with price
     (xact
       (plain_xact
         (date)
+        (effective_date)
         (payee)
         (posting
           (account)

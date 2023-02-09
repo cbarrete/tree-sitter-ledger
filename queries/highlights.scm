@@ -6,6 +6,7 @@
 ((test) @comment.test)
 
 ((date) @number.date)
+((effective_date) @number.date.effective)
 ((time) @number.time)
 ((interval) @number.interval)
 ((quantity) @number.quantity)
