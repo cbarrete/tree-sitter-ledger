@@ -182,7 +182,7 @@ module.exports = grammar({
         ),
 
         plain_xact: $ => createXact($,
-            seq($.date,
+            seq($._xact_date,
                 optional(seq($.whitespace, $.status)),
                 optional(seq($.whitespace, $.code)),
                 optional(seq($.whitespace, $.payee)),
@@ -225,7 +225,11 @@ module.exports = grammar({
         // date, optionally with an effective date, e.g.:
         // 2020-01-01
         // 2020/01/01=01-02
-        date: $ => seq($._single_date, optional(seq('=', $._single_date))),
+        _xact_date: $ => seq($.date, optional($.effective_date)),
+
+        date: $ => seq($._single_date),
+
+        effective_date: $ => seq('=', $._single_date),
 
         _dsep: $ => /[-\.\/]/,
         _2d: $ => /\d{2}/,
@@ -244,7 +248,14 @@ module.exports = grammar({
 
         payee: $ => /[^(*!\n][^*!\n]*/,
 
-        note: $ => seq(';', /.*/),
+        note: $ => seq(
+          ';',
+          $.whitespace,
+          choice(
+            prec(1, seq('[', $.effective_date, ']')),
+            prec(2, /[^\[][^=\n]*/)
+          ),
+        ),
 
         posting: $ => seq(
             $.whitespace,

@@ -295,6 +295,11 @@
     }
   },
   {
+    "type": "effective_date",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "filename",
     "named": true,
     "fields": {}
@@ -358,7 +363,17 @@
   {
     "type": "note",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "effective_date",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "note_subdirective",
@@ -422,6 +437,10 @@
         },
         {
           "type": "date",
+          "named": true
+        },
+        {
+          "type": "effective_date",
           "named": true
         },
         {
@@ -681,6 +700,14 @@
     "named": false
   },
   {
+    "type": "[",
+    "named": false
+  },
+  {
+    "type": "]",
+    "named": false
+  },
+  {
     "type": "account",
     "named": false
   },
@@ -702,11 +729,11 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": false
   },
   {
     "type": "comment",
-    "named": false
+    "named": true
   },
   {
     "type": "commodity",
@@ -762,11 +789,11 @@
   },
   {
     "type": "payee",
-    "named": true
+    "named": false
   },
   {
     "type": "payee",
-    "named": false
+    "named": true
   },
   {
     "type": "tag",
