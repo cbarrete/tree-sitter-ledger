@@ -3,6 +3,7 @@
     (comment)
 ] @comment
 ((note) @comment.note)
+((test) @comment.test)
 
 ((date) @number.date)
 ((time) @number.time)
@@ -27,6 +28,7 @@
     "assert"
     "check"
     "commodity"
+    "comment"
     "def"
     "default"
     "end"
@@ -35,6 +37,7 @@
     "nomarket"
     "note"
     "payee"
+    "test"
     "A"
     "Y"
     "N"
