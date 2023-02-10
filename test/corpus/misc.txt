@@ -328,3 +328,120 @@ various quantity formats
           (amount
             (quantity)
             (commodity)))))))
+
+================================================================================
+in-file short option
+================================================================================
+
+-M
+
+2020-12-02
+    Assets:Bank
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (directive
+      (option)))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account))))))
+
+================================================================================
+multiple in-file short option
+================================================================================
+
+-Ms
+
+2020-12-02
+    Assets:Bank
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (directive
+      (option)))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account))))))
+
+================================================================================
+in-file long option
+================================================================================
+
+--monthly
+
+2020-12-02
+    Assets:Bank
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (directive
+      (option)))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account))))))
+
+================================================================================
+in-file short option with value
+================================================================================
+
+-S date
+
+2020-12-02
+    Assets:Bank
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (directive
+      (option
+        (option_value))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account))))))
+
+================================================================================
+in-file long option with value
+================================================================================
+
+--format %(code) %(payee) %(amount)\n
+--date-format=%Y-%m-%d
+
+2020-12-02
+    Assets:Bank
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (directive
+      (option
+        (option_value))))
+  (journal_item
+    (directive
+      (option
+        (option_value))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account))))))

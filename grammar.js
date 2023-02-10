@@ -27,10 +27,19 @@ module.exports = grammar({
 
         test: $ => block($, 'test'),
 
+        option: $ => seq(
+          choice('-', '--'), /[^ =\n]+/,
+          optional(seq(choice($.whitespace, '='), $.option_value)),
+          '\n',
+        ),
+
+        option_value: $ => token(/.+/),
+
         indented_line: $ => seq($.whitespace, /[^\n]+\n/),
 
         // ! and @ are deprecated, let's not take them into account
         directive: $ => choice(
+            $.option,
             $.account_directive,
             $.commodity_directive,
             $.tag_directive,
