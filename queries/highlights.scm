@@ -12,6 +12,8 @@
 
 ((account) @field.account)
 ((commodity) @text.literal.commodity)
+((option) @text.literal.option)
+((option_value) @text.literal.option_value)
 
 ((check_in) @text.literal.check_in)
 (check_in . (date) @number.date.check_in)
