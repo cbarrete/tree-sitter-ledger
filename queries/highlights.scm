@@ -9,7 +9,7 @@
 ((time) @number.time)
 ((interval) @number.interval)
 ((quantity) @number.quantity)
-((quantity_negative) @number.negative.quantity)
+((negative_quantity) @number.negative.quantity)
 
 ((account) @field.account)
 ((commodity) @text.literal.commodity)

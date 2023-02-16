@@ -52,7 +52,7 @@ postings with status
           (status)
           (account)
           (amount
-            (quantity_negative)
+            (negative_quantity)
             (commodity)))
         (posting
           (status)
