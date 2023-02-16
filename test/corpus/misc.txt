@@ -175,7 +175,7 @@ virtual postings
         (posting
           (account)
           (amount
-            (quantity_negative)
+            (negative_quantity)
             (commodity)))
         (posting
           (account)
@@ -203,7 +203,7 @@ with price
         (posting
           (account)
           (amount
-            (quantity_negative)
+            (negative_quantity)
             (commodity))
           (price
             (amount
@@ -239,7 +239,7 @@ with price and balance assertion
         (posting
           (account)
           (amount
-            (quantity_negative)
+            (negative_quantity)
             (commodity))
           (price
             (amount

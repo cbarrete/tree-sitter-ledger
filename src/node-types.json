@@ -72,6 +72,10 @@
           "named": true
         },
         {
+          "type": "negative_quantity",
+          "named": true
+        },
+        {
           "type": "quantity",
           "named": true
         }
@@ -347,6 +351,11 @@
     }
   },
   {
+    "type": "negative_quantity",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "note",
     "named": true,
     "fields": {}
@@ -612,6 +621,10 @@
     "named": false
   },
   {
+    "type": "+",
+    "named": false
+  },
+  {
     "type": "-",
     "named": false
   },
@@ -689,11 +702,11 @@
   },
   {
     "type": "comment",
-    "named": false
+    "named": true
   },
   {
     "type": "comment",
-    "named": true
+    "named": false
   },
   {
     "type": "commodity",
