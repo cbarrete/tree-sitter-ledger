@@ -232,7 +232,7 @@ module.exports = grammar({
         effective_date: $ => seq('=', $._single_date),
 
         _dsep: $ => /[-\.\/]/,
-        _2d: $ => /\d{2}/,
+        _2d: $ => /\d{1,2}/,
         _4d: $ => /\d{4}/,
         _single_date: $ => choice(
             seq($._4d, $._dsep, $._2d, $._dsep, $._2d),

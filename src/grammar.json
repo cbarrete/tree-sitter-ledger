@@ -1513,7 +1513,7 @@
     },
     "_2d": {
       "type": "PATTERN",
-      "value": "\\d{2}"
+      "value": "\\d{1,2}"
     },
     "_4d": {
       "type": "PATTERN",
