@@ -7,7 +7,7 @@ automated transactions
     (Budget:Books)                          £200.00
 
 = /Food/
-    (Budget:Food)                           -1 EUR
+    (Budget:Food)                           -1
 
 --------------------------------------------------------------------------------
 
@@ -33,5 +33,4 @@ automated transactions
         (posting
           (account)
           (amount
-            (negative_quantity)
-            (commodity)))))))
+            (negative_quantity)))))))
