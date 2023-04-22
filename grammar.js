@@ -152,7 +152,7 @@ module.exports = grammar({
 
         assert_subdirective: $ => argumentDirective($, 'assert'),
 
-        // TODO actually should be have a boolean expression in there
+        // TODO: actually should be have a boolean expression in there
         check_subdirective: $ => argumentDirective($, 'check'),
 
         check_in: $ => seq(choice('i', 'I'),
@@ -178,7 +178,7 @@ module.exports = grammar({
         xact: $ => choice(
             $.plain_xact,
             $.periodic_xact,
-            // TODO $.automated_xact,
+            $.automated_xact,
         ),
 
         plain_xact: $ => createXact($,
@@ -222,6 +222,14 @@ module.exports = grammar({
             )
         },
 
+        automated_xact: $ => createXact($,
+            seq('=',
+                $.whitespace,
+                $.query,
+                choice($.note, '\n')
+            ),
+        ),
+
         // date, optionally with an effective date, e.g.:
         // 2020-01-01
         // 2020/01/01=01-02
@@ -247,6 +255,8 @@ module.exports = grammar({
         code: $ => seq('(', /[^)]*/, ')'),
 
         payee: $ => /[^(*!\n][^*!\n]*/,
+
+        query: $ => /[^\n]+/,
 
         note: $ => seq(
           ';',

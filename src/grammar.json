@@ -1205,6 +1205,10 @@
         {
           "type": "SYMBOL",
           "name": "periodic_xact"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "automated_xact"
         }
       ]
     },
@@ -1464,6 +1468,70 @@
         }
       ]
     },
+    "automated_xact": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "SEQ",
+          "members": [
+            {
+              "type": "STRING",
+              "value": "="
+            },
+            {
+              "type": "SYMBOL",
+              "name": "whitespace"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "query"
+            },
+            {
+              "type": "CHOICE",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "note"
+                },
+                {
+                  "type": "STRING",
+                  "value": "\n"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "posting"
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "whitespace"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "note"
+                  },
+                  {
+                    "type": "STRING",
+                    "value": "\n"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
     "_xact_date": {
       "type": "SEQ",
       "members": [
@@ -1628,6 +1696,10 @@
     "payee": {
       "type": "PATTERN",
       "value": "[^(*!\\n][^*!\\n]*"
+    },
+    "query": {
+      "type": "PATTERN",
+      "value": "[^\\n]+"
     },
     "note": {
       "type": "SEQ",

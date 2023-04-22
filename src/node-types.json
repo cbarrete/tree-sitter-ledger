@@ -88,6 +88,29 @@
     "fields": {}
   },
   {
+    "type": "automated_xact",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "note",
+          "named": true
+        },
+        {
+          "type": "posting",
+          "named": true
+        },
+        {
+          "type": "query",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "balance_assertion",
     "named": true,
     "fields": {},
@@ -589,6 +612,10 @@
       "required": true,
       "types": [
         {
+          "type": "automated_xact",
+          "named": true
+        },
+        {
           "type": "periodic_xact",
           "named": true
         },
@@ -793,6 +820,10 @@
   },
   {
     "type": "payee",
+    "named": true
+  },
+  {
+    "type": "query",
     "named": true
   },
   {
