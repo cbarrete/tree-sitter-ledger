@@ -260,11 +260,9 @@ module.exports = grammar({
 
         note: $ => seq(
           ';',
-          $.whitespace,
-          choice(
-            prec(1, seq('[', $.effective_date, ']')),
-            prec(2, /[^\[][^=\n]*/)
-          ),
+          repeat(/./),
+          optional(seq('[', $.effective_date, ']')),
+          repeat(/[^\n]/),
         ),
 
         posting: $ => seq(
