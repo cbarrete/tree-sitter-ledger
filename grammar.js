@@ -199,8 +199,8 @@ module.exports = grammar({
         ),
 
         interval: $ => {
-            ci = s => new RegExp(caseInsensitive(s))
-            ciNum = s => new RegExp(caseInsensitive('every') + ' \\d+ ' + caseInsensitive(s))
+            const ci = s => new RegExp(caseInsensitive(s))
+            const ciNum = s => new RegExp(caseInsensitive('every') + ' \\d+ ' + caseInsensitive(s))
             return choice(
                 ci('every day'),
                 ci('every week'),
