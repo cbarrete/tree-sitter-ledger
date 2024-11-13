@@ -1698,7 +1698,7 @@
     },
     "payee": {
       "type": "PATTERN",
-      "value": "[^(*!\\S;][^*!\\n;]*"
+      "value": "[^(*!\\S;][^\\n;]*"
     },
     "query": {
       "type": "PATTERN",

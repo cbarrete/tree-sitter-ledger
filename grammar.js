@@ -255,7 +255,7 @@ module.exports = grammar({
 
         code: $ => seq('(', /[^)]*/, ')'),
 
-        payee: $ => /[^(*!\S;][^*!\n;]*/,
+        payee: $ => /[^(*!\S;][^\n;]*/,
 
         query: $ => /[^\n]+/,
 
