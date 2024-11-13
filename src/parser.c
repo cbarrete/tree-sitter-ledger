@@ -6213,8 +6213,6 @@ static bool ts_lex(TSLexer *lexer, TSStateId state) {
       ACCEPT_TOKEN(sym_payee);
       if (lookahead != 0 &&
           lookahead != '\n' &&
-          lookahead != '!' &&
-          lookahead != '*' &&
           lookahead != ';') ADVANCE(453);
       END_STATE();
     case 454:
