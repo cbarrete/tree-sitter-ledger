@@ -4,7 +4,8 @@
   "description": "",
   "main": "bindings/node",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate": "./node_modules/.bin/tree-sitter generate",
+    "test": "if [ $(stat -f %m ./grammar.js) -gt $(stat -f %m ./src/grammar.json) ]; then echo Regenerating...; ./node_modules/.bin/tree-sitter generate; fi && ./node_modules/.bin/tree-sitter test"
   },
   "author": "",
   "license": "ISC",
