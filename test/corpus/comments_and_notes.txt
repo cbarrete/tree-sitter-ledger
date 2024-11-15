@@ -131,6 +131,30 @@ end test
 
 
 ================================================================================
+note on payee line
+================================================================================
+2020-12-01 Something  ; title note
+    Expenses:Food:Groceries  21.36 EUR
+    Assets:Bank:Checking
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (note)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity)))
+        (posting
+          (account))))))
+
+================================================================================
 notes
 ================================================================================
 2020-12-01 Something  ; title note
@@ -147,6 +171,7 @@ notes
       (plain_xact
         (date)
         (payee)
+        (note)
         (note)
         (posting
           (account)
