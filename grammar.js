@@ -186,7 +186,8 @@ module.exports = grammar({
                 optional(seq($.whitespace, $.status)),
                 optional(seq($.whitespace, $.code)),
                 optional(seq($.whitespace, $.payee)),
-                choice($.note, '\n')
+                optional($.note),
+                '\n'
             ),
         ),
 
@@ -254,7 +255,7 @@ module.exports = grammar({
 
         code: $ => seq('(', /[^)]*/, ')'),
 
-        payee: $ => /[^(*!\n][^*!\n]*/,
+        payee: $ => /[^(*!\n;][^*!\n;]*/,
 
         query: $ => /[^\n]+/,
 

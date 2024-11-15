@@ -1293,10 +1293,13 @@
                   "name": "note"
                 },
                 {
-                  "type": "STRING",
-                  "value": "\n"
+                  "type": "BLANK"
                 }
               ]
+            },
+            {
+              "type": "STRING",
+              "value": "\n"
             }
           ]
         },
@@ -1695,7 +1698,7 @@
     },
     "payee": {
       "type": "PATTERN",
-      "value": "[^(*!\\n][^*!\\n]*"
+      "value": "[^(*!\\n;][^*!\\n;]*"
     },
     "query": {
       "type": "PATTERN",
