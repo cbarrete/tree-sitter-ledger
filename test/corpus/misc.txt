@@ -306,6 +306,42 @@ multiple xacts
           (account))))))
 
 ================================================================================
+whitespace-only line between 2 transactions
+================================================================================
+
+; THERE MUST BE SPACES ON THE LINES BETWEEN THESE TRANSACTIONS
+; The note node with "MISSING ;" is intentional
+2020-12-02 Name
+    Account
+    
+2012-03-10 Name
+    Account
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (comment))
+  (journal_item
+    (comment))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (account))
+        (note
+          (MISSING ";")))))
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (account))))))
+
+================================================================================
 various quantity formats
 ================================================================================
 

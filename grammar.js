@@ -284,7 +284,7 @@ module.exports = grammar({
             seq('[', $.account_name, ']'),
         ), ''),
 
-        account_name: $ => /[^ ;](\S \S \S|\S \S|\S)*/,
+        account_name: $ => /[^ ;\n](\S \S \S|\S \S|\S)*/,
 
         amount: $ => choice(
             choice($.quantity, $.negative_quantity),
