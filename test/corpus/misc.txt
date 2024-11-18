@@ -63,12 +63,23 @@ With code
 2020-12-02 (#3001) Market
     Expenses:Food:Groceries
 
+2020-12-02   (#3001)   Market
+    Expenses:Food:Groceries
+
 2020-12-02 * (XFER) Market
     Expenses:Food:Groceries
 
 --------------------------------------------------------------------------------
 
 (source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (code)
+        (payee)
+        (posting
+          (account)))))
   (journal_item
     (xact
       (plain_xact
