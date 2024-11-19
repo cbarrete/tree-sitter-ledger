@@ -252,6 +252,38 @@ with price
             (quantity)
             (commodity)))))))
 
+
+================================================================================
+with price and lot price
+================================================================================
+
+2023/11/21
+    Produce:Sweet Potatoes       -80lb { $2.40} @@ $192
+    Assets:Accounts Recievable
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)
+          (amount
+            (negative_quantity)
+            (commodity))
+          (lot_price
+            (amount
+              (commodity)
+              (quantity)))
+          (price
+            (amount
+              (commodity)
+              (quantity))))
+        (posting
+          (account))))))
+
 ================================================================================
 with price and balance assertion
 ================================================================================
