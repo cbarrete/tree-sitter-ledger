@@ -273,6 +273,7 @@ module.exports = grammar({
             optional(seq(
                 $.spacer,
                 optional(seq(optional($.whitespace), $.amount)),
+                optional(seq(optional($.whitespace), $.lot_price)),
                 optional(seq(optional($.whitespace), $.price)),
                 optional(seq(optional($.whitespace), $.balance_assertion)),
                 optional(seq(optional($.whitespace), $.note)),
@@ -311,6 +312,11 @@ module.exports = grammar({
 
         commodity: $ => choice(/\p{L}+/, /\p{Sc}/, /"[^"\n]*"/),
 
+        lot_price: $ => choice(
+          seq( '{', optional($.whitespace), $.amount, optional($.whitespace), '}'),
+          seq('{{', optional($.whitespace), $.amount, optional($.whitespace), '}}'),
+        ),
+        
         price: $ => seq(
             choice('@', '@@'),
             optional($.whitespace),

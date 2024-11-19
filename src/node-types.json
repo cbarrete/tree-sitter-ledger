@@ -379,6 +379,21 @@
     }
   },
   {
+    "type": "lot_price",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "amount",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
     "type": "negative_quantity",
     "named": true,
     "fields": {}
@@ -506,6 +521,10 @@
           "named": true
         },
         {
+          "type": "lot_price",
+          "named": true
+        },
+        {
           "type": "note",
           "named": true
         },
@@ -543,7 +562,6 @@
   {
     "type": "source_file",
     "named": true,
-    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -841,6 +859,22 @@
   },
   {
     "type": "year",
+    "named": false
+  },
+  {
+    "type": "{",
+    "named": false
+  },
+  {
+    "type": "{{",
+    "named": false
+  },
+  {
+    "type": "}",
+    "named": false
+  },
+  {
+    "type": "}}",
     "named": false
   },
   {
