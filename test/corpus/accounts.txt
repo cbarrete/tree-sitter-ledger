@@ -65,3 +65,43 @@ single letter account name
         (date)
         (posting
           (account))))))
+
+================================================================================
+account names with spaces
+================================================================================
+
+2021-01-01
+    One
+    Two Three
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account))
+        (posting
+          (account))))))
+
+================================================================================
+account names with single letters surrouded by spaces
+================================================================================
+
+2021-01-01
+    Un et Deux
+    Three & Four
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account))
+        (posting
+          (account))))))

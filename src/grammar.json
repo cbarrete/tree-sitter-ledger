@@ -1977,7 +1977,7 @@
     },
     "account_name": {
       "type": "PATTERN",
-      "value": "[^ ;](\\S \\S|\\S)*"
+      "value": "[^ ;](\\S \\S \\S|\\S \\S|\\S)*"
     },
     "amount": {
       "type": "CHOICE",
