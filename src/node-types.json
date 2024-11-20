@@ -543,6 +543,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -756,11 +757,11 @@
   },
   {
     "type": "comment",
-    "named": false
+    "named": true
   },
   {
     "type": "comment",
-    "named": true
+    "named": false
   },
   {
     "type": "commodity",
