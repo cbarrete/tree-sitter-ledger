@@ -562,6 +562,7 @@
   {
     "type": "source_file",
     "named": true,
+    "root": true,
     "fields": {},
     "children": {
       "multiple": true,
@@ -775,11 +776,11 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": false
   },
   {
     "type": "comment",
-    "named": false
+    "named": true
   },
   {
     "type": "commodity",
@@ -835,11 +836,11 @@
   },
   {
     "type": "payee",
-    "named": false
+    "named": true
   },
   {
     "type": "payee",
-    "named": true
+    "named": false
   },
   {
     "type": "query",
