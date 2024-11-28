@@ -19,6 +19,10 @@
         {
           "type": "account_subdirective",
           "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
         }
       ]
     }
@@ -235,6 +239,10 @@
       "required": true,
       "types": [
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "commodity",
           "named": true
         },
@@ -274,6 +282,11 @@
   },
   {
     "type": "date",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "date_spec",
     "named": true,
     "fields": {}
   },
@@ -345,7 +358,17 @@
   {
     "type": "interval",
     "named": true,
-    "fields": {}
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "date_spec",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "journal_item",
@@ -594,6 +617,10 @@
         {
           "type": "check_subdirective",
           "named": true
+        },
+        {
+          "type": "comment",
+          "named": true
         }
       ]
     }
@@ -651,6 +678,14 @@
   },
   {
     "type": "\t",
+    "named": false
+  },
+  {
+    "type": "\t\t",
+    "named": false
+  },
+  {
+    "type": "\t ",
     "named": false
   },
   {
@@ -775,14 +810,18 @@
   },
   {
     "type": "comment",
-    "named": true
-  },
-  {
-    "type": "comment",
     "named": false
   },
   {
+    "type": "comment",
+    "named": true
+  },
+  {
     "type": "commodity",
+    "named": false
+  },
+  {
+    "type": "day",
     "named": false
   },
   {
@@ -822,6 +861,18 @@
     "named": false
   },
   {
+    "type": "last",
+    "named": false
+  },
+  {
+    "type": "month",
+    "named": false
+  },
+  {
+    "type": "next",
+    "named": false
+  },
+  {
     "type": "nomarket",
     "named": false
   },
@@ -842,6 +893,10 @@
     "named": true
   },
   {
+    "type": "quarter",
+    "named": false
+  },
+  {
     "type": "query",
     "named": true
   },
@@ -854,8 +909,16 @@
     "named": false
   },
   {
+    "type": "this",
+    "named": false
+  },
+  {
     "type": "time",
     "named": true
+  },
+  {
+    "type": "week",
+    "named": false
   },
   {
     "type": "year",
