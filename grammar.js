@@ -199,7 +199,13 @@ module.exports = grammar({
             ),
         ),
 
-        interval: $ => {
+        interval: $ => choice(
+            $._interval_period,
+            $._interval_date_spec,
+            seq($._interval_period, $.whitespace, $._interval_date_spec)
+        ),
+
+        _interval_period: $ => {
             const ci = s => new RegExp(caseInsensitive(s))
             const ciNum = s => new RegExp(caseInsensitive('every') + ' \\d+ ' + caseInsensitive(s))
             return choice(
@@ -223,6 +229,31 @@ module.exports = grammar({
             )
         },
 
+        _interval_date_spec: $ => {
+            const ci = s => new RegExp(caseInsensitive(s))
+
+            const from = seq(
+                choice(ci('since'), ci('from')),
+                $.whitespace,
+                $.date_spec,
+            );
+            const until = seq(
+                choice(ci('until'), ci('to')),
+                $.whitespace,
+                $.date_spec,
+            );
+
+            return choice(
+                from,
+                until,
+                seq(from, $.whitespace, until),
+                seq(ci('in'), $.whitespace, $.date_spec),
+
+                // just "next week", "last month", etc
+                alias($._relative_date_spec, $.date_spec),
+            )
+        },
+
         automated_xact: $ => createXact($,
             seq('=',
                 $.whitespace,
@@ -239,6 +270,24 @@ module.exports = grammar({
         date: $ => seq($._single_date),
 
         effective_date: $ => seq('=', $._single_date),
+
+        // https://ledger-cli.org/doc/ledger3.html#Period-Expressions
+        date_spec: $ => choice(
+            $._4d,
+            $._single_date,
+            $._month,
+            $._relative_date_spec,
+        ),
+
+        // HACK: months and abbreviated months are locale specific, so just
+        // match any "word"
+        _month: $ => /[^0-9\s]+/,
+
+        _relative_date_spec: $ => seq(
+            choice('last', 'this', 'next'),
+            $.whitespace,
+            choice('day', 'week', 'month', 'quarter', 'year', $._month),
+        ),
 
         _dsep: $ => /[-\.\/]/,
         _2d: $ => /\d{1,2}/,

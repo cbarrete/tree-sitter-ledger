@@ -67,3 +67,98 @@ periodic transactions require interval
     (ERROR)
     (UNEXPECTED ':')
     (UNEXPECTED ':')))
+
+================================================================================
+periodic transactions with begin/end times
+================================================================================
+
+~ every week from 24/1/1
+    Groceries  $100
+
+~ every week from Jan to Feb
+    Groceries  $100
+
+~ every week until 2024
+    Groceries  $100
+
+~ every week in august
+    Groceries  $100
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (periodic_xact
+        (interval
+          (date_spec))
+        (posting
+          (account)
+          (amount
+            (commodity)
+            (quantity))))))
+  (journal_item
+    (xact
+      (periodic_xact
+        (interval
+          (date_spec)
+          (date_spec))
+        (posting
+          (account)
+          (amount
+            (commodity)
+            (quantity))))))
+  (journal_item
+    (xact
+      (periodic_xact
+        (interval
+          (date_spec))
+        (posting
+          (account)
+          (amount
+            (commodity)
+            (quantity))))))
+  (journal_item
+    (xact
+      (periodic_xact
+        (interval
+          (date_spec))
+        (posting
+          (account)
+          (amount
+            (commodity)
+            (quantity)))))))
+
+================================================================================
+periodic transactions with relative dates
+================================================================================
+
+~ weekly last august
+    Groceries  $100
+
+~ last week
+    Groceries  $100
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (periodic_xact
+        (interval
+          (date_spec))
+        (posting
+          (account)
+          (amount
+            (commodity)
+            (quantity))))))
+  (journal_item
+    (xact
+      (periodic_xact
+        (interval
+          (date_spec))
+        (posting
+          (account)
+          (amount
+            (commodity)
+            (quantity)))))))
