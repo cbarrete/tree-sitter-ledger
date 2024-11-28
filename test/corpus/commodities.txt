@@ -135,3 +135,85 @@ UTF-8 commodity names
           (amount
             (quantity)
             (commodity)))))))
+
+================================================================================
+amount without commodity
+================================================================================
+2020-12-02
+    Expenses:Food:Groceries  2
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)
+          (amount
+            (quantity)))))))
+
+================================================================================
+amount without commodity followed by price
+================================================================================
+2020-12-02
+    Expenses:Food:Groceries  2 @ $1
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)
+          (amount
+            (quantity))
+          (price
+            (amount
+              (commodity)
+              (quantity))))))))
+
+================================================================================
+amount without commodity followed by price, with mutliple spaces before price
+================================================================================
+2020-12-02
+    Expenses:Food:Groceries  2  @ $1
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)
+          (amount
+            (quantity))
+          (price
+            (amount
+              (commodity)
+              (quantity))))))))
+
+================================================================================
+amount without commodity followed by comment, with space after comment char
+================================================================================
+2020-12-02
+    Expenses:Food:Groceries  2 ; foo
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)
+          (amount
+            (quantity))
+          (note))))))
+

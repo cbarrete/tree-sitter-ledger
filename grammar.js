@@ -289,11 +289,10 @@ module.exports = grammar({
         account_name: $ => /[^ ;\n](\S \S \S|\S \S|\S)*/,
 
         amount: $ => choice(
-            choice($.quantity, $.negative_quantity),
             prec.right(1, seq(
                 choice($.quantity, $.negative_quantity),
                 optional($.whitespace),
-                $.commodity)),
+                optional($.commodity))),
             prec.right(1, seq(
                 $.commodity,
                 optional($.whitespace),
