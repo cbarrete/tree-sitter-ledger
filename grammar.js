@@ -331,7 +331,7 @@ module.exports = grammar({
 
         whitespace: $ => repeat1(choice(' ', '\t')),
 
-        spacer: $ => choice('  ', '\t', ' \t'),
+        spacer: $ => choice('  ', ' \t', '\t ', '\t\t'),
     }
 })
 
