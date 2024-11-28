@@ -49,7 +49,10 @@ module.exports = grammar({
 
         account_directive: $ => seq(
             seq('account', $.whitespace, $.account, '\n'),
-            repeat($.account_subdirective),
+            repeat(choice(
+                seq($.whitespace, $.comment),
+                $.account_subdirective
+            )),
         ),
 
         account_subdirective: $ => choice(
@@ -64,7 +67,10 @@ module.exports = grammar({
 
         commodity_directive: $ => seq(
             seq('commodity', $.whitespace, $.commodity, '\n'),
-            repeat($.commodity_subdirective),
+            repeat(choice(
+                seq($.whitespace, $.comment),
+                $.commodity_subdirective,
+            )),
         ),
 
         commodity_subdirective: $ => choice(
@@ -78,6 +84,7 @@ module.exports = grammar({
         tag_directive: $ => seq(
             seq('tag', $.whitespace, /\p{L}+\n/),
             repeat(choice(
+                seq($.whitespace, $.comment),
                 $.assert_subdirective,
                 $.check_subdirective,
             )),
