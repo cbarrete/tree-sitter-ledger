@@ -1,5 +1,4 @@
 {
-  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/grammar.schema.json",
   "name": "ledger",
   "rules": {
     "source_file": {
@@ -2361,3 +2360,4 @@
   ],
   "supertypes": []
 }
+
