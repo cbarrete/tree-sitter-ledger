@@ -44,6 +44,25 @@ account Assets:Bank
           (note_subdirective))))))
 
 ================================================================================
+account with comment
+================================================================================
+
+account Assets:Bank
+  ; this is my bank account
+  note My Bank account
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (directive
+      (account_directive
+        (account)
+        (comment)
+        (account_subdirective
+          (note_subdirective))))))
+
+================================================================================
 commodity with format
 ================================================================================
 
@@ -62,6 +81,25 @@ commodity CHF
             (amount
               (quantity)
               (commodity))))))))
+
+================================================================================
+commodity with comment
+================================================================================
+
+commodity $
+  ; dolla bills
+  alias USD
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (directive
+      (commodity_directive
+        (commodity)
+        (comment)
+        (commodity_subdirective
+          (alias_subdirective))))))
 
 ================================================================================
 alias declaration
