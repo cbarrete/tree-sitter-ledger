@@ -9,7 +9,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "nan": "^2.14.2"
+    "nan": "^2.14.2",
+    "node-addon-api": "^8.2.2"
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.24.3"
