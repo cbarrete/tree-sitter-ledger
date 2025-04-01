@@ -811,11 +811,11 @@
   },
   {
     "type": "comment",
-    "named": true
+    "named": false
   },
   {
     "type": "comment",
-    "named": false
+    "named": true
   },
   {
     "type": "commodity",
@@ -887,11 +887,11 @@
   },
   {
     "type": "payee",
-    "named": true
+    "named": false
   },
   {
     "type": "payee",
-    "named": false
+    "named": true
   },
   {
     "type": "quarter",
