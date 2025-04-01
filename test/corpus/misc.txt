@@ -410,6 +410,9 @@ various quantity formats
 2020-12-02
     Assets:Bank  1 000,00 PLN
     Assets:Bank  1,000.00 CHF
+    Assets:Bank  $1
+    Assets:Bank  -$1
+    Assets:Bank  $-1
 
 --------------------------------------------------------------------------------
 
@@ -427,7 +430,22 @@ various quantity formats
           (account)
           (amount
             (quantity)
-            (commodity)))))))
+            (commodity)))
+        (posting
+          (account)
+          (amount
+            (commodity)
+            (quantity)))
+        (posting
+          (account)
+          (amount
+            (commodity)
+            (negative_quantity)))
+        (posting
+          (account)
+          (amount
+            (commodity)
+            (negative_quantity)))))))
 
 ================================================================================
 in-file short option

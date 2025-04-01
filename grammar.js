@@ -344,26 +344,31 @@ module.exports = grammar({
 
         account_name: $ => /[^ ;\n](\S \S \S|\S \S|\S)*/,
 
-        amount: $ => choice(
-            prec.right(1, seq(
-                choice($.quantity, $.negative_quantity),
-                optional($.whitespace),
-                optional($.commodity))),
-            prec.right(1, seq(
-                $.commodity,
-                optional($.whitespace),
-                choice($.quantity, $.negative_quantity))),
-        ),
+        amount: $ => {
+            const quantity = seq(optional('+'), $.quantity);
+            const negative_quantity = seq('-', $.negative_quantity);
+            
+            return choice(
+                prec.right(1, seq(
+                    choice(quantity, negative_quantity),
+                    optional($.whitespace),
+                    optional($.commodity))),
+                prec.right(1, seq(
+                    $.commodity,
+                    optional($.whitespace),
+                    choice(quantity, negative_quantity))),
+                prec.right(1, seq(
+                    '-',
+                    optional($.whitespace),
+                    $.commodity,
+                    optional($.whitespace),
+                    $.negative_quantity)),
+            )
+        },
 
         _quantity: $ => token(/\d([\d., ]*\d)?/),
-
-        quantity: $ => seq(
-            optional('+'), $._quantity,
-        ),
-
-        negative_quantity: $ => seq(
-            '-', $._quantity,
-        ),
+        quantity: $ => $._quantity,
+        negative_quantity: $ => $._quantity,
 
         commodity: $ => choice(/\p{L}+/, /\p{Sc}/, /"[^"\n]*"/),
 
