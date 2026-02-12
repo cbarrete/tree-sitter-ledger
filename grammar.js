@@ -167,6 +167,7 @@ module.exports = grammar({
             'format',
             $.whitespace,
             $.amount,
+            "\n",
         ),
 
         note_subdirective: $ => argumentDirective($, 'note'),
