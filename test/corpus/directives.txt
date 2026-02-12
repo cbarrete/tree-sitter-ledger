@@ -102,6 +102,27 @@ commodity $
           (alias_subdirective))))))
 
 ================================================================================
+payee with subdirectives
+================================================================================
+
+payee KFC
+    alias KENTUCKY FRIED CHICKEN
+    ; comment
+    uuid 2a2e21d434356f886c84371eebac6e44f1337fda
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (directive
+      (payee_directive
+        (payee)
+        (payee_subdirective
+          (alias_subdirective))
+        (comment)
+        (payee_subdirective)))))
+
+================================================================================
 alias declaration
 ================================================================================
 
