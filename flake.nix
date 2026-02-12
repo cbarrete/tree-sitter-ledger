@@ -2,11 +2,18 @@
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
   outputs = { self, nixpkgs }:
-  let
-    pkgs = nixpkgs.legacyPackages.x86_64-linux;
-  in {
-    devShells.x86_64-linux.default = pkgs.mkShellNoCC {
-      packages = [ pkgs.tree-sitter pkgs.nodejs ];
+    let
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" "x86_64-darwin" "aarch64-darwin" ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+    in {
+      devShells = forAllSystems (system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in {
+          default = pkgs.mkShellNoCC {
+            packages = [ pkgs.tree-sitter pkgs.nodejs ];
+          };
+        }
+      );
     };
-  };
 }
