@@ -63,6 +63,39 @@ account Assets:Bank
           (note_subdirective))))))
 
 ================================================================================
+account with all subdirectives
+================================================================================
+
+account Expenses:Food
+    note This account is all about the chicken!
+    alias food
+    payee ^(KFC|Popeyes)$
+    check commodity == "$"
+    assert commodity == "$"
+    eval print("Hello!")
+    default
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (directive
+      (account_directive
+        (account)
+        (account_subdirective
+          (note_subdirective))
+        (account_subdirective
+          (alias_subdirective))
+        (account_subdirective)
+        (account_subdirective
+          (check_subdirective))
+        (account_subdirective
+          (assert_subdirective))
+        (account_subdirective)
+        (account_subdirective
+          (default_subdirective))))))
+
+================================================================================
 commodity with format
 ================================================================================
 
@@ -100,6 +133,37 @@ commodity $
         (comment)
         (commodity_subdirective
           (alias_subdirective))))))
+
+================================================================================
+commodity with all subdirectives
+================================================================================
+
+commodity $
+   note American Dollars
+   format $1,000.00
+   nomarket
+   alias USD
+   default
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (directive
+      (commodity_directive
+        (commodity)
+        (commodity_subdirective
+          (note_subdirective))
+        (commodity_subdirective
+          (format_subdirective
+            (amount
+              (commodity)
+              (quantity))))
+        (commodity_subdirective)
+        (commodity_subdirective
+          (alias_subdirective))
+        (commodity_subdirective
+          (default_subdirective))))))
 
 ================================================================================
 payee with subdirectives
