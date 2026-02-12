@@ -42,6 +42,7 @@ module.exports = grammar({
             $.option,
             $.account_directive,
             $.commodity_directive,
+            $.payee_directive,
             $.tag_directive,
             seq($.word_directive, '\n'),
             seq($.char_directive, '\n'),
@@ -79,6 +80,19 @@ module.exports = grammar({
             $.format_subdirective,
             $.note_subdirective,
             singleKeywordDirective($, 'nomarket'),
+      ),
+        
+        payee_directive: $ => seq(
+            seq('payee', $.whitespace, $.payee, '\n'),
+            repeat(choice(
+                seq($.whitespace, $.comment),
+                $.payee_subdirective,
+            )),
+        ),
+
+        payee_subdirective: $ => choice(
+            $.alias_subdirective,
+            argumentDirective($, 'uuid'),
         ),
 
         tag_directive: $ => seq(
