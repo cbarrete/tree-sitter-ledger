@@ -2821,5 +2821,6 @@
     "spacer",
     "whitespace"
   ],
-  "supertypes": []
+  "supertypes": [],
+  "reserved": {}
 }
