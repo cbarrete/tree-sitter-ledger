@@ -288,6 +288,17 @@ module.exports = grammar({
         // 2020-01-01
         // 2020/01/01=01-02
         _xact_date: $ => seq($.date, optional($.effective_date)),
+        // optional date, optional effective date, e.g.:
+        // [2020-01-01]
+        // [2020/01/01=01-02]
+        // [=01-02]
+        // []
+        _note_date: $ => seq(
+          '[',
+          optional($.date),
+          optional($.effective_date),
+          ']',
+        ),
 
         date: $ => seq($._single_date),
 
@@ -333,7 +344,7 @@ module.exports = grammar({
         note: $ => seq(
           ';',
           repeat(/./),
-          optional(seq('[', $.effective_date, ']')),
+          optional($._note_date),
           repeat(/[^\n]/),
         ),
 
