@@ -326,6 +326,85 @@ with price and balance assertion
               (commodity))))))))
 
 ================================================================================
+note with date
+================================================================================
+
+2026-03-31 Some market
+    Expenses:Food:Groceries  1 EUR  ; [2026-03-31]
+    Assets:Bank:Checking
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity))
+          (note
+              (date)))
+        (posting
+          (account))))))
+
+================================================================================
+note with effective date
+================================================================================
+
+2026-03-31 Some market
+    Expenses:Food:Groceries  1 EUR  ; [=2026-04-01]
+    Assets:Bank:Checking
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity))
+          (note
+            (effective_date)))
+        (posting
+          (account))))))
+
+================================================================================
+note with date and effective date
+================================================================================
+
+2026-03-31 Some market
+    Expenses:Food:Groceries  1 EUR  ; [2026-03-31=2026-04-01]
+    Assets:Bank:Checking
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity))
+          (note
+            (date)
+            (effective_date)))
+        (posting
+          (account))))))
+
+================================================================================
 multiple xacts
 ================================================================================
 

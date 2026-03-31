@@ -430,9 +430,13 @@
     "named": true,
     "fields": {},
     "children": {
-      "multiple": false,
+      "multiple": true,
       "required": false,
       "types": [
+        {
+          "type": "date",
+          "named": true
+        },
         {
           "type": "effective_date",
           "named": true
@@ -853,11 +857,11 @@
   },
   {
     "type": "comment",
-    "named": false
+    "named": true
   },
   {
     "type": "comment",
-    "named": true
+    "named": false
   },
   {
     "type": "commodity",
