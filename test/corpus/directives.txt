@@ -205,10 +205,18 @@ single line tags
 
 tag Receipt
 tag CSV
+tag foo1
+tag 123
 
 --------------------------------------------------------------------------------
 
 (source_file
+  (journal_item
+    (directive
+      (tag_directive)))
+  (journal_item
+    (directive
+      (tag_directive)))
   (journal_item
     (directive
       (tag_directive)))
