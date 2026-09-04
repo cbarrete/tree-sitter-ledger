@@ -96,7 +96,7 @@ module.exports = grammar({
         ),
 
         tag_directive: $ => seq(
-            seq('tag', $.whitespace, /\p{L}+\n/),
+            seq('tag', $.whitespace, /(\p{L}|\p{N})+\n/),
             repeat(choice(
                 seq($.whitespace, $.comment),
                 $.assert_subdirective,
