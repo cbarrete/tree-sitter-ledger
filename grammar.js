@@ -67,7 +67,13 @@ module.exports = grammar({
         ),
 
         commodity_directive: $ => seq(
-            seq('commodity', $.whitespace, $.commodity, '\n'),
+            seq(
+              'commodity', $.whitespace, $.commodity,
+              choice(
+                seq($.whitespace, $.comment), // includes newline
+                '\n'
+              )
+            ),
             repeat(choice(
                 seq($.whitespace, $.comment),
                 $.commodity_subdirective,
