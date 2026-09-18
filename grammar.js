@@ -81,7 +81,7 @@ module.exports = grammar({
             $.note_subdirective,
             singleKeywordDirective($, 'nomarket'),
       ),
-        
+
         payee_directive: $ => seq(
             seq('payee', $.whitespace, $.payee, '\n'),
             repeat(choice(
