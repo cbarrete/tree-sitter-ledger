@@ -737,7 +737,7 @@
             },
             {
               "type": "PATTERN",
-              "value": "\\p{L}+\\n"
+              "value": "(\\p{L})+\\n"
             }
           ]
         },
