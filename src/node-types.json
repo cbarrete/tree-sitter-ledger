@@ -130,6 +130,94 @@
     }
   },
   {
+    "type": "binary_expression_amount",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\t",
+            "named": false
+          },
+          {
+            "type": " ",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "amount",
+            "named": true
+          },
+          {
+            "type": "binary_expression_amount",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "*",
+            "named": false
+          },
+          {
+            "type": "+",
+            "named": false
+          },
+          {
+            "type": "-",
+            "named": false
+          },
+          {
+            "type": "/",
+            "named": false
+          }
+        ]
+      },
+      "right": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "\t",
+            "named": false
+          },
+          {
+            "type": " ",
+            "named": false
+          },
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "amount",
+            "named": true
+          },
+          {
+            "type": "binary_expression_amount",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
     "type": "block_comment",
     "named": true,
     "fields": {}
@@ -338,6 +426,25 @@
     "type": "effective_date",
     "named": true,
     "fields": {}
+  },
+  {
+    "type": "expression_amount",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "amount",
+          "named": true
+        },
+        {
+          "type": "binary_expression_amount",
+          "named": true
+        }
+      ]
+    }
   },
   {
     "type": "filename",
@@ -586,6 +693,10 @@
           "named": true
         },
         {
+          "type": "expression_amount",
+          "named": true
+        },
+        {
           "type": "lot_price",
           "named": true
         },
@@ -614,6 +725,10 @@
       "types": [
         {
           "type": "amount",
+          "named": true
+        },
+        {
+          "type": "expression_amount",
           "named": true
         }
       ]
@@ -773,6 +888,10 @@
   },
   {
     "type": "--",
+    "named": false
+  },
+  {
+    "type": "/",
     "named": false
   },
   {
