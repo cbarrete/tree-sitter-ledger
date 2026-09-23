@@ -349,7 +349,7 @@ module.exports = grammar({
             $.account,
             optional(seq(
                 $.spacer,
-                optional(seq(optional($.whitespace), $.amount)),
+                optional(seq(optional($.whitespace), $._posting_amount)),
                 optional(seq(optional($.whitespace), $.lot_price)),
                 optional(seq(optional($.whitespace), $.price)),
                 optional(seq(optional($.whitespace), $.balance_assertion)),
@@ -364,6 +364,38 @@ module.exports = grammar({
         ), ''),
 
         account_name: $ => /[^ ;\n](\S \S \S|\S \S|\S)*/,
+
+        _posting_amount: $ => choice($.amount, $.expression_amount),
+
+        // expression amounts must be wrapped in parens
+        expression_amount: $ => seq(
+            '(',
+            optional($.whitespace),
+            $._expression_amount,
+            optional($.whitespace),
+            ')',
+        ),
+
+        // parens within expression amounts denote grouping and must be matched
+        _expression_amount: $ => prec.left(2, choice(
+            seq(
+              '(',
+              optional($.whitespace),
+              choice($.amount, $._expression_amount),
+              optional($.whitespace),
+              ')',
+            ),
+            $.amount,
+            $.binary_expression_amount,
+        )),
+
+        binary_expression_amount: $ => prec.left(1, seq(
+            field('left', choice($._expression_amount, $.amount)),
+            optional($.whitespace),
+            field('operator', choice('+', '-', '*', '/')),
+            optional($.whitespace),
+            field('right', choice($._expression_amount, $.amount)),
+        )),
 
         amount: $ => {
             const quantity = seq(optional('+'), $.quantity);

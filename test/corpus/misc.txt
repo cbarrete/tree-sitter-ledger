@@ -412,6 +412,92 @@ various quantity formats
             (negative_quantity)))))))
 
 ================================================================================
+basic expession amounts
+================================================================================
+
+2020-12-02
+    Assets:Bank  (1+1)
+    Assets:Bank  ($1 * 2)
+    Assets:Bank  (1,000.00 CHF / -3$)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)
+          (expression_amount
+            (binary_expression_amount
+              left: (amount (quantity))
+              right: (amount (quantity)))))
+        (posting
+          (account)
+          (expression_amount
+            (binary_expression_amount
+              left: (amount (commodity) (quantity))
+              right: (amount (quantity)))))
+        (posting
+          (account)
+          (expression_amount
+            (binary_expression_amount
+              left: (amount (quantity) (commodity))
+              right: (amount (negative_quantity) (commodity)))))))))
+
+================================================================================
+singular and nested expession amounts
+================================================================================
+
+2020-12-02
+    Assets:Bank  (1)
+    ABC  (   ( 1  ) )
+    Assets:Bank  (1+1-1)
+    Assets:Bank  ((1+2))
+    Assets:Bank  ((1+2)*(3/4))
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (posting
+          (account)
+          (expression_amount
+            (amount (quantity))))
+        (posting
+          (account)
+          (expression_amount
+            (amount (quantity))))
+        (posting
+          (account)
+          (expression_amount
+            (binary_expression_amount
+              left: (binary_expression_amount
+                left: (amount (quantity))
+                right: (amount (quantity)))
+              right: (amount (quantity)))))
+        (posting
+          (account)
+          (expression_amount
+            (binary_expression_amount
+              left: (amount (quantity))
+              right: (amount (quantity)))))
+        (posting
+          (account)
+          (expression_amount
+            (binary_expression_amount
+              left: (binary_expression_amount
+                left: (amount (quantity))
+                right: (amount (quantity)))
+              right: (binary_expression_amount
+                left: (amount (quantity))
+                right: (amount (quantity))))))))))
+
+================================================================================
 in-file short option
 ================================================================================
 
