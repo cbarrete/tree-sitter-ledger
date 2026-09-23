@@ -498,6 +498,47 @@ singular and nested expession amounts
                 right: (amount (quantity))))))))))
 
 ================================================================================
+cost expessions
+================================================================================
+
+2012-03-10 My Broker
+    Assets:Brokerage             10 AAPL @ ($500.00 / 10)
+    Assets:Brokerage             (5 AAPL * 2) @ ($500.00 / 10)
+    Assets:Brokerage:Cash
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (plain_xact
+        (date)
+        (payee)
+        (posting
+          (account)
+          (amount
+            (quantity)
+            (commodity))
+          (price
+            (expression_amount
+              (binary_expression_amount
+                left: (amount (commodity) (quantity))
+                right: (amount (quantity))))))
+        (posting
+          (account)
+          (expression_amount
+            (binary_expression_amount
+              left: (amount (quantity) (commodity))
+              right: (amount (quantity))))
+          (price
+            (expression_amount
+              (binary_expression_amount
+                left: (amount (commodity) (quantity))
+                right: (amount (quantity))))))
+        (posting
+          (account))))))
+
+================================================================================
 in-file short option
 ================================================================================
 
