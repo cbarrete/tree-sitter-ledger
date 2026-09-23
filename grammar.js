@@ -433,7 +433,7 @@ module.exports = grammar({
         price: $ => seq(
             choice('@', '@@'),
             optional($.whitespace),
-            $.amount,
+            choice($.amount, $.expression_amount)
         ),
 
         balance_assertion: $ => seq(

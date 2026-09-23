@@ -34,3 +34,31 @@ automated transactions
           (account)
           (amount
             (negative_quantity)))))))
+
+================================================================================
+expression amounts in automated transactions
+================================================================================
+
+= ^Income
+    Liabilities:Tax:%(tag(/Tax/))  (20/120)
+    $account                       (-20/120)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (journal_item
+    (xact
+      (automated_xact
+        (query)
+        (posting
+          (account)
+          (expression_amount
+            (binary_expression_amount
+              left: (amount (quantity))
+              right: (amount (quantity)))))
+        (posting
+          (account)
+          (expression_amount
+            (binary_expression_amount
+              left: (amount (negative_quantity))
+              right: (amount (quantity)))))))))
